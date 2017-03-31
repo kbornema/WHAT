@@ -24,6 +24,9 @@ public class GameManager : AManager<GameManager>
     [SerializeField]
     private Options options;
     public Options GameOptions { get { return options; } }
+
+    [SerializeField]
+    private EnemyPrefabs enemyPrefabs;
     
     private int numPlayers = 0;
     private Player[] players = new Player[(int)Player.Index.Count];
@@ -34,6 +37,8 @@ public class GameManager : AManager<GameManager>
     [HideInInspector]
     public Event onGravityChanged = new Event();
 
+    private List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
+
     protected override void OnAwake()
     {
         Application.targetFrameRate = targetFps;
@@ -42,6 +47,9 @@ public class GameManager : AManager<GameManager>
     private void Update()
     {
         CheckSpawnNewPlayer();
+
+        if (Input.GetKeyDown(KeyCode.P))
+            SpawnEnemyRandom(enemyPrefabs.normalTurtle);
     }
 
     private void CheckSpawnNewPlayer()
@@ -62,14 +70,39 @@ public class GameManager : AManager<GameManager>
 
     private void OnNewPlayerSpawned(Player player)
     {
-        player.onKilled.AddListener(OnPlayerKilled);
-
+        player.onKilled.AddListener(OnPlayerDeath);
     }
 
-    private void OnPlayerKilled(Player p)
+    private void OnPlayerDeath(Player p)
     {
         p.Stats.deaths++;
         p.Stats.lostPoints += options.DeathPenality;
+    }
+
+    private void SpawnEnemyRandom(Actor prefab)
+    {
+        SpawnEnemy(prefab, Random.Range(0, enemySpawners.Count));
+    }
+
+    private void SpawnEnemy(Actor prefab, int spawnId)
+    {
+        Actor instance = enemySpawners[spawnId].Spawn(prefab);
+
+        instance.TheHealth.onZeroHealth.AddListener(OnEnemyKilled);
+        
+    }
+
+    private void OnEnemyKilled(Health h, Health.EventInfo info)
+    {
+        if(info.source && info.source.ThePlayer)
+        {
+            info.source.ThePlayer.Stats.kills++;
+        }
+    }
+
+    public void RegisterEnemySpawner(EnemySpawner spawner)
+    {
+        enemySpawners.Add(spawner);
     }
 
     [System.Serializable]
@@ -86,5 +119,14 @@ public class GameManager : AManager<GameManager>
         [SerializeField]
         private float respawnInviTime = 5.0f;
         public float RespawnInviTime { get { return respawnInviTime; } }
+    }
+
+    [System.Serializable]
+    public class EnemyPrefabs
+    {
+        public Actor bombTurtle;
+        public Actor normalTurtle;
+    
+        
     }
 }

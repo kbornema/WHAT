@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114908113831337400}
   - component: {fileID: 114661173771280794}
   - component: {fileID: 114365315345381964}
+  - component: {fileID: 114051310918234910}
   m_Layer: 8
   m_Name: Player
   m_TagString: Friendly
@@ -135,8 +136,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1369151507082644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.12, y: 1.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.2616105, y: -1.183068, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4853666227584544}
   - {fileID: 4799355014641760}
@@ -300,6 +301,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.375}
+--- !u!114 &114051310918234910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369151507082644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3381cd414814f9449dd839970afd21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114365315345381964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,7 +351,11 @@ MonoBehaviour:
   health: {fileID: 114804176320249318}
   index: 0
   padDeadzone: 0.5
-  respawnTime: 5
+  statistics:
+    deaths: 0
+    kills: 0
+    gainedPoints: 0
+    lostPoints: 0
   projectilePrefab: {fileID: 114817932489765836, guid: b90e68baec6b7e049aaea1f60c124f90,
     type: 2}
 --- !u!114 &114804176320249318
@@ -380,6 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89a89c6dbf336a48ac1e71b5f5846bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 114661173771280794}
+  health: {fileID: 114804176320249318}
   _center: {fileID: 1369151507082644}
   _feet: {fileID: 1011018219271840}
   groundDetector: {fileID: 114477152043235604}
@@ -455,7 +473,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a2c2ca5866b10ef43bd3ba91a1780d45, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d0f73bbca58179469803ed0f13d6f84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

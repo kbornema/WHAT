@@ -4,9 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IDamageable, IHealable
+public class Health : MonoBehaviour, IDamageable
 {
-    public class Event : UnityEvent<Health> { }
+    public class Event : UnityEvent<Health, EventInfo> { }
 
     [HideInInspector] 
     public Event onHealthChanged = new Event();
@@ -48,14 +48,14 @@ public class Health : MonoBehaviour, IDamageable, IHealable
     private void HealToMaxHitpoints()
     {
         this._curHitpoints = this._maxHitpoints;
-        onHealthChanged.Invoke(this);
+        onHealthChanged.Invoke(this, new EventInfo());
     }
 
-    private void ChangeHealth(float delta)
+    private void ChangeHealth(EventInfo info)
     {
-        this._curHitpoints += delta;
+        this._curHitpoints += info.delta;
 
-        onHealthChanged.Invoke(this);
+        onHealthChanged.Invoke(this, info);
 
         if (this._curHitpoints > this._maxHitpoints)
         {
@@ -65,23 +65,44 @@ public class Health : MonoBehaviour, IDamageable, IHealable
         else if(this._curHitpoints <= 0)
         {
             this._curHitpoints = 0;
-            onZeroHealth.Invoke(this);
+            onZeroHealth.Invoke(this, info);
         }
     }
 
-    public void ApplyDamage(Actor source, Damage dmg)
+    public void ApplyDamage(EventInfo info)
     {
-        ChangeHealth(-dmg._damage);
+        ChangeHealth(info);
     }
 
-    public void ApplyHeal(float amount)
+    public void ApplyHeal(EventInfo info)
     {
-        ChangeHealth(amount);
+        ChangeHealth(info);
     }
 
 
     public void Refill()
     {
-        ApplyHeal(this.MaxHitpoints);
+        ApplyHeal(new EventInfo(this.MaxHitpoints, null));
+    }
+
+    public class EventInfo
+    {
+        public float delta;
+        public Actor source;
+
+        public EventInfo()
+        {
+        }
+
+        public EventInfo(float delta)
+        {
+            this.delta = delta;
+        }
+
+        public EventInfo(float delta, Actor source)
+            : this(delta)
+        {
+            this.source = source;
+        }
     }
 }

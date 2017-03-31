@@ -7,6 +7,14 @@ public class Actor : MonoBehaviour
     public class Event : UnityEngine.Events.UnityEvent<Actor> { }
 
     [SerializeField]
+    private Player player;
+    public Player ThePlayer { get { return player; } }
+
+    [SerializeField]
+    private Health health;
+    public Health TheHealth { get { return health; } }
+
+    [SerializeField]
     private GameObject _center;
     public GameObject Center { get { return _center; } }
 

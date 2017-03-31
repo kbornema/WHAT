@@ -58,6 +58,15 @@ MonoBehaviour:
   gameCam: {fileID: 0}
   playerPrefab: {fileID: 114661173771280794, guid: e41b7452b19cbbc4d9b216d0e566d178,
     type: 2}
+  options:
+    deathPenality: -5
+    respawnCooldown: 5
+    respawnInviTime: 5
+  enemyPrefabs:
+    bombTurtle: {fileID: 114673872992723284, guid: 4d69077877761f4438769ccdb3c9a919,
+      type: 2}
+    normalTurtle: {fileID: 114673872992723284, guid: 37cec8ba2ef8f304883ce867ec1f34c3,
+      type: 2}
 --- !u!114 &114937665583791178
 MonoBehaviour:
   m_ObjectHideFlags: 1

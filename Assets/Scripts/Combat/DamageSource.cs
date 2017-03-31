@@ -118,7 +118,7 @@ public class DamageSource : MonoBehaviour
         //only deal damage if the tag is different from this damageSource
         if(damagable != null && !gameObject.CompareTag(collider.tag))
         {
-            damagable.ApplyDamage(_source, _damage);
+            damagable.ApplyDamage(new Health.EventInfo(-_damage._damage, _source));
             onDamageDealt.Invoke(this, collider);
         }
     }

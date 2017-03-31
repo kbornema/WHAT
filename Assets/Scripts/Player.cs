@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         }
 	}
 
-    private void OnZeroHealth(Health h)
+    private void OnZeroHealth(Health h, Health.EventInfo info)
     {
         StartCoroutine(Respawn());
     }
