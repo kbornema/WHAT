@@ -78,16 +78,16 @@ Material:
       second: 0.5
     - first:
         name: _CutDown
-      second: 0
+      second: 0.17120409
     - first:
         name: _CutLeft
-      second: 0
+      second: 0.12111601
     - first:
         name: _CutRight
-      second: 0
+      second: 0.23218597
     - first:
         name: _CutUp
-      second: 0
+      second: 0.1492435
     - first:
         name: _Cutoff
       second: 0.5

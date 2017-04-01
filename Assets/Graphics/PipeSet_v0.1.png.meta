@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ee7fe3094c710c644bf77246a01877cb
-timeCreated: 1490997693
+timeCreated: 1491082441
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -83,6 +83,14 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 0
@@ -267,6 +275,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PipeSet_v0.1_12
+      rect:
+        serializedVersion: 2
+        x: 96
         y: 32
         width: 32
         height: 32
