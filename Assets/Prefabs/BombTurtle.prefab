@@ -261,6 +261,7 @@ MonoBehaviour:
   _physicalCollider: {fileID: 58468231933978958}
   maxJumpCount: 1
   jumpCount: 0
+  pointsOnKill: 50
   _moveSpeed: 5
 --- !u!114 &114785635896725780
 MonoBehaviour:
@@ -309,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rootObject: {fileID: 1450369562235972}
+  _rootActor: {fileID: 114673872992723284}
   _maxHitpoints: 100
   _curHitpoints: 100
 --- !u!212 &212055526918782954

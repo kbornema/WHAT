@@ -28,8 +28,7 @@ public abstract class AGameEvent : MonoBehaviour
     }
     
     protected abstract void _EndEvent();
-
-
+    
     public abstract bool GetGameEventWon();
 
     public abstract void OnGameEventWon();

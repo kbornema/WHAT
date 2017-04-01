@@ -11,14 +11,11 @@ public class Crosshair : MonoBehaviour
     [SerializeField]
     private bool rotateWithLookDir;
 
-    private float minOffset;
-    private float maxOffset;
-
 	
 	// Update is called once per frame
 	void LateUpdate () 
     {
-        gameObject.transform.position = actor.Center.transform.pos2() + actor.LookDirection;
+        //gameObject.transform.position = actor.Center.transform.pos2() + actor.LookDirection;
 
         if(rotateWithLookDir)
         {
