@@ -5,10 +5,14 @@ using UnityEngine;
 public class NormalTurtle : MonoBehaviour 
 {
     [SerializeField]
+    private ActorDetector actorDetector;
+
+    [SerializeField]
     private JumpDetector jumpDetector;
 
     [SerializeField]
     private Actor actor;
+
 
     [SerializeField]
     private float thinkTimerMin = 1.0f;
@@ -16,11 +20,29 @@ public class NormalTurtle : MonoBehaviour
     private float thinkTimerMax = 1.0f;
     private bool isThinking = true;
 
+    private Actor targetEnemy;
+    private Vector2 toTargetEnemy;
+
     private void Start()
     {
         StartCoroutine(Think());
 
         jumpDetector.onTriggerEnter.AddListener(OnJumpTrigger);
+
+        actorDetector.onEnter.AddListener(OnActorEnter);
+        actorDetector.onExit.AddListener(OnActorExit);
+    }
+
+    private void OnActorEnter(ActorDetector arg0, Actor arg1)
+    {
+        //Debug.Log(arg1.gameObject.name);
+        targetEnemy = arg1;
+    }
+
+    private void OnActorExit(ActorDetector arg0, Actor arg1)
+    {
+        if(arg1 == targetEnemy)
+            targetEnemy = null;
     }
 
     private void OnJumpTrigger(JumpDetector arg0, Collider2D arg1)
@@ -36,7 +58,31 @@ public class NormalTurtle : MonoBehaviour
         {
             float time = Random.Range(thinkTimerMin, thinkTimerMax);
             yield return new WaitForSeconds(time);
+
             DecideDirection();
+        }
+    }
+
+    private void Update()
+    {
+        if(targetEnemy && EventManager.Instance.IsDark)
+        {
+            if (targetEnemy.TheHealth.CurHitpoints == 0)
+            {
+                DecideDirection();
+                targetEnemy = null;
+                return;
+            }
+
+            toTargetEnemy = targetEnemy.Center.transform.position - actor.Center.transform.position;
+            toTargetEnemy.Normalize();
+
+            if(toTargetEnemy.y > actor.Center.transform.position.y)
+            {
+                actor.Jump();
+            }
+
+            actor.SetMoveX(toTargetEnemy.x);
         }
     }
 

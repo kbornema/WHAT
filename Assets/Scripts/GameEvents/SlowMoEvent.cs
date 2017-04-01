@@ -7,13 +7,9 @@ public class SlowMoEvent : AGameEvent
     [SerializeField]
     private float timeScale = 0.5f;
 
-    private float oldTimeScale = 1.0f;
-
     protected override void _StartEvent()
     {
         float dur = Random.Range(minDur, maxDur);
-
-        oldTimeScale = Time.timeScale;
 
         Time.timeScale = timeScale;
 
@@ -29,7 +25,7 @@ public class SlowMoEvent : AGameEvent
 
     protected override void _EndEvent()
     {
-        Time.timeScale = oldTimeScale;
+        Time.timeScale = 1.0f;
     }
 
     public override bool GetGameEventWon()
