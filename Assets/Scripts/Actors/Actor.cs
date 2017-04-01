@@ -41,6 +41,10 @@ public class Actor : MonoBehaviour
     [SerializeField, ReadOnly]
     private int jumpCount = 0;
 
+    [SerializeField]
+    private int pointsOnKill;
+    public int PointsOnKill { get { return pointsOnKill; } }
+
     /// <summary>Is called when the movingSpeed changes or when the moveDirection changes.</summary>
     [HideInInspector] 
     public Event onMovementChanged = new Event();
@@ -156,7 +160,10 @@ public class Actor : MonoBehaviour
         if (jumpCount >= maxJumpCount)
             return;
 
-        AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+        //float reduction = (jumpCount + 1);
+        //AddForce(new Vector2(0, jumpPower / reduction), ForceMode2D.Impulse);
+        _myRigidbody.velocity = new Vector2(0, jumpPower);
+
         jumpCount++;
     }
 

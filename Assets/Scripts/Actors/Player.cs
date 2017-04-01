@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     public Actor TheActor { get { return actor; } }
 
     [SerializeField]
+    private AWeapon weapon;
+    public AWeapon Weapon { get { return weapon; } }
+
+    [SerializeField]
     private Health health;
     public Health TheHealth { get { return health; } }
 
@@ -173,14 +177,32 @@ public class Player : MonoBehaviour
             actor.LookDirection = (lookDir / lookVal);
         }
 
-        if(Input.GetButtonDown(fire0Input))
+        HandleWeapon();
+
+
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            AProjectile instance = Instantiate(projectilePrefab);
-            
-            instance.gameObject.transform.position = actor.Center.transform.position;
-            instance.InitProjectile(actor, actor.LookDirection.normalized);
+            EventManager.Instance.StartEvent(EventManager.Instance.GetGameEvent(0));
         }
 	}
+
+    private void HandleWeapon()
+    {
+        if (Input.GetButtonDown(fire0Input) && weapon.Mode == AWeapon.FireMode.Click)
+        {
+            weapon.TryShoot(actor, actor.LookDirection.normalized);
+        }
+
+        else if (Input.GetButton(fire0Input) && weapon.Mode == AWeapon.FireMode.Press)
+        {
+            weapon.TryShoot(actor, actor.LookDirection.normalized);
+        }
+
+        else if (Input.GetButtonUp(fire0Input) && weapon.Mode == AWeapon.FireMode.Release)
+        {
+            weapon.TryShoot(actor, actor.LookDirection.normalized);
+        }
+    }
 
     private void ApplyColors(float alpha)
     {

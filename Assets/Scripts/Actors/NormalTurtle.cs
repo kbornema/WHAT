@@ -5,6 +5,9 @@ using UnityEngine;
 public class NormalTurtle : MonoBehaviour 
 {
     [SerializeField]
+    private JumpDetector jumpDetector;
+
+    [SerializeField]
     private Actor actor;
 
     [SerializeField]
@@ -16,6 +19,13 @@ public class NormalTurtle : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Think());
+
+        jumpDetector.onTriggerEnter.AddListener(OnJumpTrigger);
+    }
+
+    private void OnJumpTrigger(JumpDetector arg0, Collider2D arg1)
+    {
+        actor.Jump();
     }
 
     private IEnumerator Think()
@@ -33,11 +43,6 @@ public class NormalTurtle : MonoBehaviour
     private void DecideDirection()
     {
         float rand = Random.value;
-
-        float jumpRand = Random.value;
-
-        if (jumpRand < 0.25f)
-            actor.Jump();
 
         if(rand < 0.33)
         {

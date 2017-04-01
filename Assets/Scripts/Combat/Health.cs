@@ -17,6 +17,10 @@ public class Health : MonoBehaviour, IDamageable
     private GameObject _rootObject;
     public GameObject RootObject { get { return _rootObject; } }
 
+    [SerializeField]
+    private Actor _rootActor;
+    public Actor RootActor { get { return _rootActor; } }
+
     [SerializeField] 
     private float _maxHitpoints;
     [SerializeField, ReadOnly] 
