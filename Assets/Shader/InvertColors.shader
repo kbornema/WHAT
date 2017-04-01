@@ -4,6 +4,10 @@ Shader "ScreenEffect/InvertColors"
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_Factor("Factor", Range(0.0, 1.0)) = 1.0
+		_CutLeft("CutLeft", Range(0.0, 1.0)) = 0.0
+		_CutRight("CutRight", Range(0.0, 1.0)) = 0.0
+		_CutUp("CutUp", Range(0.0, 1.0)) = 0.0
+		_CutDown("CutDown", Range(0.0, 1.0)) = 0.0
 	}
 	SubShader
 	{
@@ -43,14 +47,43 @@ Shader "ScreenEffect/InvertColors"
 			
 			sampler2D _MainTex;
 			float _Factor;
+			float _CutLeft;
+			float _CutRight;
+			float _CutUp;
+			float _CutDown;
+
+
+			float3 invert(float3 inColor)
+			{
+				return abs(_Factor * float3(1.0, 1.0, 1.0) - inColor);
+			}
 			
 			float4 fragmentShader(fragInput input) : SV_Target
 			{		
 				float4 worldColor = tex2D(_MainTex, input.uv);
+				float4 finalColor = worldColor;
 
-				float3 color = abs(_Factor * float3(1.0, 1.0, 1.0) - worldColor.rgb);
+				if(input.uv.x < _CutLeft)
+				{
+					finalColor.rgb = invert(finalColor.rgb);
+				}
 
-				return float4(color, worldColor.a);
+				if(input.uv.x > _CutRight)
+				{
+					finalColor.rgb = invert(finalColor.rgb);
+				}
+
+				if(input.uv.y < _CutUp)
+				{
+					finalColor.rgb = invert(finalColor.rgb);
+				}
+
+				if(input.uv.y > _CutDown)
+				{
+					finalColor.rgb = invert(finalColor.rgb);
+				}
+
+				return finalColor;
 			}
 
 			ENDCG

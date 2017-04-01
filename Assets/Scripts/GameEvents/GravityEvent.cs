@@ -8,17 +8,13 @@ public class GravityEvent : AGameEvent
 
     [SerializeField]
     private float worldGravityScale = 0.5f;
-    [SerializeField]
-    private float minDuration = 5.0f;
-    [SerializeField]
-    private float maxDuration = 10.0f;
 
     protected override void _StartEvent()
     {
         oldWorldGravity = GameManager.Instance.WorldGravityScale;
         GameManager.Instance.WorldGravityScale = worldGravityScale;
 
-        float dur = Random.Range(minDuration, maxDuration);
+        float dur = Random.Range(minDur, maxDur);
 
         StartCoroutine(CancelInvoke(dur));
     }

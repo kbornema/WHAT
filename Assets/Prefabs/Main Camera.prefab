@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1766884733436218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children:
   - {fileID: 4741663962444272}
   m_Father: {fileID: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f95a20957eb0340b918f003a5ca8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialPrefab: {fileID: 2100000, guid: 23c93127a3e7b95428b5b28a297b5ae3, type: 2}
+  materialPrefab: {fileID: 2100000, guid: b36828352de06324d8b227adbf5a728e, type: 2}
   applyEffect: 1
 --- !u!114 &114257086524283852
 MonoBehaviour:
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13834c4cb4aa7ca4aada006dd573692b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialPrefab: {fileID: 2100000, guid: 5565407f761e16346b67e81ef3eb6390, type: 2}
+  materialPrefab: {fileID: 2100000, guid: 300f4751567dd874e8204fbae2363e06, type: 2}
   applyEffect: 1
   myCam: {fileID: 20516779285655366}
   lightCam: {fileID: 20359177170272228}
@@ -232,4 +232,5 @@ MonoBehaviour:
   instantiateImageEffects: 0
   cam: {fileID: 20516779285655366}
   lightCam: {fileID: 20359177170272228}
-  invertColors: {fileID: 114232031256803210}
+  invertCols: {fileID: 114232031256803210}
+  moveSpeed: 1

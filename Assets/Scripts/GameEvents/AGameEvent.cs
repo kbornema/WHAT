@@ -6,6 +6,13 @@ using UnityEngine.Events;
 public abstract class AGameEvent : MonoBehaviour 
 {
     [SerializeField]
+    protected float minDur;
+    public float MinDur { get { return minDur; } }
+    [SerializeField]
+    protected float maxDur;
+    public float MaxDur { get { return MinDur; } }
+
+    [SerializeField]
     protected int pointsOnWin = 0;
     public int PointsOnWin { get { return pointsOnWin; } }
 

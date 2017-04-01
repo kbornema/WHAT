@@ -74,6 +74,21 @@ Material:
         name: _BumpScale
       second: 1
     - first:
+        name: _Cut
+      second: 0.5
+    - first:
+        name: _CutDown
+      second: 0
+    - first:
+        name: _CutLeft
+      second: 0
+    - first:
+        name: _CutRight
+      second: 0
+    - first:
+        name: _CutUp
+      second: 0
+    - first:
         name: _Cutoff
       second: 0.5
     - first:
@@ -84,7 +99,7 @@ Material:
       second: 0
     - first:
         name: _Factor
-      second: 0
+      second: 1
     - first:
         name: _GlossMapScale
       second: 1

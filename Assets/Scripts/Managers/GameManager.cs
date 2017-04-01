@@ -22,11 +22,19 @@ public class GameManager : AManager<GameManager>
     private Player playerPrefab;
 
     [SerializeField]
+    private GameObject acidRoot;
+    public GameObject AcidRoot { get { return acidRoot; } }
+
+    [SerializeField]
     private Options options;
     public Options GameOptions { get { return options; } }
 
     [SerializeField]
     private EnemyPrefabs enemyPrefabs;
+
+    [SerializeField]
+    private DifficultySettings settings;
+    public DifficultySettings Settings { get { return settings; } }
     
     private int numPlayers = 0;
     private Player[] players = new Player[(int)Player.Index.Count];
@@ -38,10 +46,20 @@ public class GameManager : AManager<GameManager>
     public Event onGravityChanged = new Event();
 
     private List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
+    private List<PlayerSpawn> playerSpawner = new List<PlayerSpawn>();
+
+    private bool isSpawning = true;
+    
+    private float difficulty = 0.0f;
+    public float Difficulty { get { return difficulty; } }
+
+    private float time = 0.0f;
 
     protected override void OnAwake()
     {
         Application.targetFrameRate = targetFps;
+
+        StartCoroutine(SpawnRoutine());
     }
 
     private void Update()
@@ -49,7 +67,35 @@ public class GameManager : AManager<GameManager>
         CheckSpawnNewPlayer();
 
         if (Input.GetKeyDown(KeyCode.P))
-            SpawnEnemyRandom(enemyPrefabs.normalTurtle);
+            SpawnEnemyRandomPlace(enemyPrefabs.normalTurtle);
+
+        time += Time.deltaTime;
+        
+        if(difficulty < 1.0f)
+        {
+            difficulty = time / options.TimeToFullDifficulty;
+
+            if (difficulty >= 1.0f)
+                difficulty = 1.0f;
+        }
+    }
+
+    private IEnumerator SpawnRoutine()
+    {
+        while(isSpawning)
+        {
+            float cooldown = settings.GetSpawnCooldown(difficulty);
+            yield return new WaitForSeconds(cooldown);
+
+            int numSpawns = settings.GetNumSpawns(difficulty);
+
+            for (int i = 0; i < numSpawns; i++)
+            {
+                yield return new WaitForSeconds(Random.Range(0.0f, 0.25f));
+                SpawnEnemyRandom();  
+            }
+        }
+
     }
 
     private void CheckSpawnNewPlayer()
@@ -60,6 +106,7 @@ public class GameManager : AManager<GameManager>
             {
                 Player instance = Instantiate(playerPrefab);
 
+                instance.gameObject.transform.position = GetPlayerSpawnPos();
                 instance.PlayerIndex = (Player.Index)i;
                 players[i] = instance;
                 numPlayers++;
@@ -71,8 +118,7 @@ public class GameManager : AManager<GameManager>
     private void OnNewPlayerSpawned(Player player)
     {
         player.onKilled.AddListener(OnPlayerDeath);
-    
-
+        
         AWeapon weaponInstance = Instantiate(options.PlayerStartWeaponPrefab);
         player.TheActor.AddWeapon(weaponInstance);
         player.Weapon = weaponInstance;
@@ -102,9 +148,20 @@ public class GameManager : AManager<GameManager>
         return true;
     }
 
-    private void SpawnEnemyRandom(Actor prefab)
+    private void SpawnEnemyRandomPlace(Actor prefab)
     {
         SpawnEnemy(prefab, Random.Range(0, enemySpawners.Count));
+    }
+
+    public void SpawnEnemyRandom()
+    {
+        Actor prefab = enemyPrefabs.GetRandom(difficulty);
+        SpawnEnemy(prefab, Random.Range(0, enemySpawners.Count));
+    }
+
+    public void SpawnNormalTurtle()
+    {
+        SpawnEnemy(enemyPrefabs.normalTurtle, Random.Range(0, enemySpawners.Count));
     }
 
     private void SpawnEnemy(Actor prefab, int spawnId)
@@ -112,7 +169,6 @@ public class GameManager : AManager<GameManager>
         Actor instance = enemySpawners[spawnId].Spawn(prefab);
 
         instance.TheHealth.onZeroHealth.AddListener(OnEnemyKilled);
-        
     }
 
     private void OnEnemyKilled(Health enemyHealth, Health.EventInfo info)
@@ -124,6 +180,16 @@ public class GameManager : AManager<GameManager>
             if(enemyHealth.RootActor)
                 info.source.ThePlayer.Stats.gainedPoints += enemyHealth.RootActor.PointsOnKill;
         }
+    }
+    
+    public void RegisterPlayerSpawn(PlayerSpawn playerSpawn)
+    {
+        playerSpawner.Add(playerSpawn);
+    }
+
+    public Vector3 GetPlayerSpawnPos()
+    {
+        return playerSpawner[Random.Range(0, playerSpawner.Count)].transform.position;
     }
 
     public void RegisterEnemySpawner(EnemySpawner spawner)
@@ -149,14 +215,81 @@ public class GameManager : AManager<GameManager>
         [SerializeField]
         private float respawnInviTime = 5.0f;
         public float RespawnInviTime { get { return respawnInviTime; } }
+
+        [SerializeField]
+        private float timeToFullDifficulty = 300.0f;
+        public float TimeToFullDifficulty { get { return timeToFullDifficulty; } }
+    }
+
+    [System.Serializable]
+    public class DifficultySettings
+    {
+        [Header("Start")]
+        [SerializeField]
+        private int spawnsMinStart = 1;
+        [SerializeField]
+        private int spawnsMaxStart = 1;
+
+        [SerializeField]
+        private float spawnCdMinStart = 3.0f;
+        [SerializeField]
+        private float spawnCdMaxStart = 6.0f;
+
+        [Header("End")]
+        [SerializeField]
+        private int spawnsMinEnd = 1;
+        [SerializeField]
+        private int spawnsMaxEnd = 1;
+
+        [SerializeField]
+        private float spawnCdMinEnd = 3.0f;
+        [SerializeField]
+        private float spawnCdMaxEnd = 6.0f;
+
+        [SerializeField]
+        private float timeBetweenEventsStart = 5.0f;
+        [SerializeField]
+        private float timeBetweenEventsEnd = -5.0f;
+
+        public float GetSpawnCooldown(float difficulty)
+        {
+            float min = Mathf.Lerp(spawnCdMinStart, spawnCdMinEnd, difficulty);
+            float max = Mathf.Lerp(spawnCdMaxStart, spawnCdMaxEnd, difficulty);
+
+            return Random.Range(min, max);
+        }
+
+        public int GetNumSpawns(float difficulty)
+        {
+            int min = (int)Mathf.Lerp(spawnsMinStart, spawnsMinEnd, difficulty);
+            int max = (int)Mathf.Lerp(spawnsMaxStart, spawnsMaxEnd, difficulty);
+
+            return Random.Range(min, max + 1);
+        }
+
+        public float GetTimeBetweenEvents(float difficulty)
+        {
+            return Mathf.Lerp(timeBetweenEventsStart, timeBetweenEventsEnd, difficulty);
+        }
     }
 
     [System.Serializable]
     public class EnemyPrefabs
     {
+        public float bombChance = 0.15f;
+        public float bombIncrease = 0.25f;
+
         public Actor bombTurtle;
         public Actor normalTurtle;
-    
         
+        public Actor GetRandom(float difficulty)
+        {
+            float rand = Random.value;
+
+            if (rand < bombChance + difficulty * bombIncrease)
+                return bombTurtle;
+
+            return normalTurtle;    
+        }
     }
 }

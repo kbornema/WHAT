@@ -20,7 +20,6 @@ public class KillZone : MonoBehaviour {
 
         else
         {
-            Debug.Log(other.gameObject.name);
             Destroy(other.gameObject);
         }
     }

@@ -39,10 +39,7 @@ public class Player : MonoBehaviour
     public Event onKilled = new Event();
     [HideInInspector]
     public Event onRespawn = new Event();
-
-
-    private bool killedByEnvironment;
-
+    
     private string moveXAxisInput = "MoveX_";
     private string jumpInput = "Jump_";
     private string lookXInput = "LookX_";
@@ -71,6 +68,7 @@ public class Player : MonoBehaviour
         fire0Input += indexIdString;
 
         health.onZeroHealth.AddListener(OnZeroHealth);
+        health.onHealthChanged.AddListener(OnHealthChanged);
 
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         normalSpriteColors = new Color[spriteRenderers.Length];
@@ -81,11 +79,14 @@ public class Player : MonoBehaviour
         }
 	}
 
+    private void OnHealthChanged(Health h, Health.EventInfo info)
+    {
+        if(info.delta < 0.0f)
+            GameManager.Instance.GameCam.Shake(0.25f, 0.25f);
+    }
+
     private void OnZeroHealth(Health h, Health.EventInfo info)
     {
-        if (info.source == null)
-            killedByEnvironment = true;
-
         StartCoroutine(Respawn());
     }
 
@@ -115,13 +116,10 @@ public class Player : MonoBehaviour
 
         onRespawn.Invoke(this);
 
-        if (killedByEnvironment)
-            actor.gameObject.transform.position = Vector3.zero;
+        actor.gameObject.transform.position = GameManager.Instance.GetPlayerSpawnPos();
 
-        else
-            yield return Invi(GameManager.Instance.GameOptions.RespawnInviTime, true);
+        yield return Invi(GameManager.Instance.GameOptions.RespawnInviTime, true);
 
-        killedByEnvironment = false;
         IsDead = false;
     }
 

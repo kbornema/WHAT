@@ -21,6 +21,16 @@ public class EventManager : AManager<EventManager>
     public Event onEventFailed = new Event();
     [HideInInspector]
     public Event onEventWon = new Event();
+    [HideInInspector]
+    public Event onDarknessArrived = new Event();
+    [HideInInspector]
+    public Event onDarknessFading = new Event();
+
+    public bool IsDark { get; set; }
+
+    [SerializeField]
+    private float timeBetweenEvents = 5.0f;
+    public bool isRunning = true;
 
     private AGameEvent[] allGameEvents;
     private AGameEvent GetGameEvent(int id)
@@ -31,10 +41,24 @@ public class EventManager : AManager<EventManager>
         return allGameEvents[id];
     }
 
-    public void StartRandomEvent()
+    public AGameEvent StartRandomEvent()
     {
         int eventId = Random.Range(0, openEvents.Count);
-        StartEvent(openEvents[eventId]);
+        AGameEvent even = openEvents[eventId];
+        StartEvent(even);
+        return even;
+    }
+
+    public void StartDarkness(AGameEvent ev)
+    {
+        onDarknessArrived.Invoke(ev);
+        IsDark = true;
+    }
+
+    public void EndDarkness(AGameEvent ev)
+    {
+        onDarknessFading.Invoke(ev);
+        IsDark = false;
     }
 
     public int AllGameEventsCount { get { return allGameEvents.Length; } }
@@ -47,6 +71,8 @@ public class EventManager : AManager<EventManager>
         {
             openEvents.Add(allGameEvents[i]);
         }
+
+        StartCoroutine(EventRoutine());
     }
 
     public bool StartEvent(AGameEvent gameEvent)
@@ -93,6 +119,20 @@ public class EventManager : AManager<EventManager>
         openEvents.Add(gameEvent);
     }
 
+    private IEnumerator EventRoutine()
+    {
+        yield return new WaitForSeconds(timeBetweenEvents);
+        AGameEvent lastEvent = StartRandomEvent();
+
+        while(isRunning)
+        {
+            yield return new WaitForSeconds(lastEvent.MaxDur + timeBetweenEvents);
+            lastEvent = StartRandomEvent();
+
+            timeBetweenEvents = GameManager.Instance.Settings.GetTimeBetweenEvents(GameManager.Instance.Difficulty);
+        }  
+    }
+    
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))

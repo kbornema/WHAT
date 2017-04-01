@@ -6,7 +6,7 @@ public class Saturation : AScreenEffect
 {
     public void SetSaturation(float val)
     {
-        materialPrefab.SetFloat("_Saturation", val);
+        usedMaterial.SetFloat("_Saturation", val);
     }
 
     protected override void BeforeRenderImage()

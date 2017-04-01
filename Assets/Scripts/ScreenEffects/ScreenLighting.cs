@@ -27,12 +27,12 @@ public class ScreenLighting : AScreenEffect
     private void SetRenderTexture()
     {
         lightTexture = lightCam.targetTexture;
-        materialPrefab.SetTexture("_MultTex", lightTexture);
+        usedMaterial.SetTexture("_MultTex", lightTexture);
     }
 
     protected override void BeforeRenderImage()
     {
-        Debug.Assert(materialPrefab);
+        Debug.Assert(usedMaterial);
 
         if (lightTexture != lightCam.targetTexture)
         {
