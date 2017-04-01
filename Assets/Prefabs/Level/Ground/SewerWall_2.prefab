@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4402395486267996}
   - component: {fileID: 212247890707060762}
   - component: {fileID: 61671677542807228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SewerWall_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

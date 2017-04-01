@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4572278992864530}
   - component: {fileID: 212246815644840370}
+  - component: {fileID: 60226846449942218}
   m_Layer: 0
   m_Name: PipeSet_v0.1_9
   m_TagString: Untagged
@@ -34,12 +35,34 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742052392177076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60226846449942218
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742052392177076}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.27432823, y: 0.46528894}
+      - {x: -0.2781849, y: 0.42672127}
+      - {x: -0.34187222, y: 0.3206094}
+      - {x: -0.4957447, y: 0.26748347}
+      - {x: -0.4961424, y: -0.274328}
+      - {x: -0.038963318, y: -0.25118744}
+      - {x: 0.10185909, y: -0.17711723}
+      - {x: 0.2589016, y: 0.021161556}
 --- !u!212 &212246815644840370
 SpriteRenderer:
   m_ObjectHideFlags: 1
