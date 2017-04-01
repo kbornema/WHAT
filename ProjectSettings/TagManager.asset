@@ -41,6 +41,18 @@ TagManager:
   - 
   - None
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1079407073
+    locked: 0
+  - name: Platforms
+    uniqueID: 1818099725
+    locked: 0
+  - name: Actors
+    uniqueID: 1870390967
+    locked: 0
+  - name: Bullets
+    uniqueID: 2540640951
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

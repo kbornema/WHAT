@@ -79,6 +79,9 @@ public abstract class AProjectile : MonoBehaviour
         if (_inheritTagFromSource)
         {
             gameObject.tag = this._sourceActor.gameObject.tag;
+
+            if(gameObject != _damageSource.gameObject)
+                _damageSource.tag = this._sourceActor.gameObject.tag;
         }
 
         _curLifeTime = _lifeTime;

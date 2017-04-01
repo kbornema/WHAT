@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LightingMaterial
+  m_Name: LightingMat
   m_Shader: {fileID: 4800000, guid: 743ceb75f4dde03459e5fecb99270798, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -88,6 +88,9 @@ Material:
     - first:
         name: _DstBlend
       second: 0
+    - first:
+        name: _Factor
+      second: 1
     - first:
         name: _GlossMapScale
       second: 1

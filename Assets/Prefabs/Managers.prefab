@@ -90,6 +90,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 114661173771280794, guid: e41b7452b19cbbc4d9b216d0e566d178,
     type: 2}
   options:
+    playerStartWeaponPrefab: {fileID: 114067993526778888, guid: 37e7477861862f74987dec999a812b78,
+      type: 2}
     deathPenality: -5
     respawnCooldown: 5
     respawnInviTime: 5
@@ -111,8 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsOnWin: 0
   isRunning: 0
-  minDuration: 5
-  maxDuration: 15
+  minDuration: 2.5
+  maxDuration: 7.5
   timeScale: 0.5
 --- !u!114 &114883480490362190
 MonoBehaviour:

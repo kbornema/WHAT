@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8776a00efe3c447bbfcdc58596459a, type: 3}
+  m_Name: WallSet
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 1264621777318154, guid: 1d7033056720ee742a6f6f01dd0c7b15, type: 2}
+  - {fileID: 1509292953513992, guid: 0cfb28fdd053e5947b586409060fb32f, type: 2}
+  - {fileID: 1356791948283372, guid: 0e64f097ec1ce1e48a55ed3877ba6e4e, type: 2}
+  - {fileID: 1453744942497592, guid: 1d85a6eb7d00d0b4db792c59f4a38a43, type: 2}
+  - {fileID: 1286130999000182, guid: 3d93ca61abe4052499ca22ed16369784, type: 2}
+  - {fileID: 1589610876091518, guid: a2605f960192e8c4b98de071d611853e, type: 2}
+  weights:
+  - weight: 1
+    accumChance: 0.16666667
+    chance: 0.16666667
+  - weight: 1
+    accumChance: 0.33333334
+    chance: 0.16666667
+  - weight: 1
+    accumChance: 0.5
+    chance: 0.16666667
+  - weight: 1
+    accumChance: 0.6666667
+    chance: 0.16666667
+  - weight: 1
+    accumChance: 0.8333334
+    chance: 0.16666667
+  - weight: 1
+    accumChance: 1
+    chance: 0.16666667
+  randomizer:
+    minScaleX: 2
+    maxScaleX: 2
+    minScaleY: 2
+    maxScaleY: 2
+    minRotation: 0
+    maxRotation: 0
+    chanceMirrorX: 0
+    chanceMirrorY: 0
