@@ -90,14 +90,13 @@ public class EventManager : AManager<EventManager>
 
         StartCoroutine(EventRoutine());
     }
-
-
+    
     public bool StartEvent(AGameEvent gameEvent)
     {
         if (gameEvent == null || gameEvent.IsRunning)
             return false;
 
-        Debug.Log("StartEvent: " + gameEvent);
+        //Debug.Log("StartEvent: " + gameEvent);
         bool result = openEvents.Remove(gameEvent);
         Debug.Assert(result);
         gameEvent.StartEvent();
@@ -112,7 +111,7 @@ public class EventManager : AManager<EventManager>
     {
         Debug.Assert(gameEvent.IsRunning);
         Debug.Assert(currentEvents.Contains(gameEvent));
-        Debug.Log("EndEvent: " + gameEvent);
+        //Debug.Log("EndEvent: " + gameEvent);
 
         gameEvent.EndEvent();
         onEventWon.Invoke(gameEvent);

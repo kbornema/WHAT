@@ -1,12 +1,25 @@
 fileFormatVersion: 2
-guid: 3173feb22de2d054096b42e2afaa551b
-timeCreated: 1491082137
+guid: f1c0d6079538cc044a9ca8616905baaa
+timeCreated: 1491086785
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: playerJump_0
-    21300002: playerJump_1
-    21300004: playerJump_2
+    21300000: playerRun_0
+    21300002: playerRun_1
+    21300004: playerRun_2
+    21300006: playerRun_3
+    21300008: playerRun_4
+    21300010: playerRun_5
+    21300012: playerRun_6
+    21300014: playerRun_7
+    21300016: playerRedRun_0
+    21300018: playerRedRun_1
+    21300020: playerRedRun_2
+    21300022: playerRedRun_3
+    21300024: playerRedRun_4
+    21300026: playerRedRun_5
+    21300028: playerRedRun_6
+    21300030: playerRedRun_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -73,7 +86,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: playerJump_0
+      name: playerRedRun_0
       rect:
         serializedVersion: 2
         x: 0
@@ -86,7 +99,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: playerJump_1
+      name: playerRedRun_1
       rect:
         serializedVersion: 2
         x: 64
@@ -99,10 +112,75 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: playerJump_2
+      name: playerRedRun_2
       rect:
         serializedVersion: 2
         x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerRedRun_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerRedRun_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerRedRun_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerRedRun_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerRedRun_7
+      rect:
+        serializedVersion: 2
+        x: 448
         y: 0
         width: 64
         height: 64

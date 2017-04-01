@@ -55,12 +55,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4653517453600552}
   - component: {fileID: 50036932323112726}
-  - component: {fileID: 58519248097514654}
   - component: {fileID: 114908113831337400}
   - component: {fileID: 114661173771280794}
   - component: {fileID: 114365315345381964}
   - component: {fileID: 114051310918234910}
   - component: {fileID: 95873853419983422}
+  - component: {fileID: 60800307325863730}
   m_Layer: 8
   m_Name: Player
   m_TagString: Friendly
@@ -77,8 +77,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4799355014641760}
   - component: {fileID: 114804176320249318}
-  - component: {fileID: 58966172818836628}
   - component: {fileID: 50411443588188206}
+  - component: {fileID: 60148966614634194}
   m_Layer: 9
   m_Name: health
   m_TagString: Friendly
@@ -153,7 +153,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1369151507082644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5779078, y: -2.4194517, z: 0}
+  m_LocalPosition: {x: -2.9096477, y: -1.612189, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4853666227584544}
@@ -170,8 +170,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1011018219271840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.024, y: -0.361, z: 0}
+  m_LocalScale: {x: 0.15468737, y: 0.27500045, z: 1}
   m_Children: []
   m_Father: {fileID: 4653517453600552}
   m_RootOrder: 3
@@ -290,22 +290,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58519248097514654
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1369151507082644}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!58 &58966172818836628
-CircleCollider2D:
+--- !u!60 &60148966614634194
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -316,8 +302,36 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Points:
+    m_Paths:
+    - - {x: -0.07942265, y: 0.2893772}
+      - {x: 0.14227694, y: 0.3157308}
+      - {x: 0.12339008, y: 0.020587683}
+      - {x: 0.14275223, y: -0.30605614}
+      - {x: -0.022514522, y: -0.38264346}
+      - {x: -0.17395204, y: -0.29904056}
+      - {x: -0.1986323, y: -0.12153673}
+--- !u!60 &60800307325863730
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369151507082644}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -0.07942265, y: 0.2893772}
+      - {x: 0.14227694, y: 0.3157308}
+      - {x: 0.12339008, y: 0.020587683}
+      - {x: 0.14275223, y: -0.30605614}
+      - {x: -0.022514522, y: -0.38264346}
+      - {x: -0.17395204, y: -0.29904056}
+      - {x: -0.1986323, y: -0.12153673}
 --- !u!61 &61601872050407358
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -331,7 +345,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.375}
+  m_Size: {x: 1, y: 1}
 --- !u!95 &95873853419983422
 Animator:
   serializedVersion: 3
@@ -445,11 +459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95873853419983422}
-  jumpTime: 1
-  dieTime: 1
-  runTime: 1
-  idleTime: 1
-  fallTime: 1
+  jumpTime: 0.3
+  dieTime: 0.5
+  runTime: 0.75
+  idleTime: 0.5
+  fallTime: 0.25
 --- !u!114 &114908113831337400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,7 +484,7 @@ MonoBehaviour:
   groundDetector: {fileID: 114477152043235604}
   jumpPower: 10
   _myRigidbody: {fileID: 50036932323112726}
-  _physicalCollider: {fileID: 58519248097514654}
+  _physicalCollider: {fileID: 0}
   maxJumpCount: 2
   jumpCount: 0
   pointsOnKill: 0
@@ -541,7 +555,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1870390967
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb8e71f0199d2ea438203f0bd9354efa, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 4c8a0c5d477fea74fae3b35f48f9828c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

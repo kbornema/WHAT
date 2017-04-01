@@ -8,6 +8,7 @@ public class Actor : MonoBehaviour
 
     [SerializeField]
     private ActorAnimator actorAnimator;
+    public ActorAnimator TheAnimator { get { return actorAnimator; } }
 
     [SerializeField]
     private Player player;
@@ -32,8 +33,6 @@ public class Actor : MonoBehaviour
     [SerializeField]
     private ContactDetector groundDetector;
     public ContactDetector GroundDetector { get { return groundDetector; } }
-
-    public bool IsGrounded { get { return groundDetector.IsGrounded; } }
 
     [SerializeField]
     private float jumpPower = 10.0f;
@@ -60,6 +59,10 @@ public class Actor : MonoBehaviour
     public Event onLookDirChanged = new Event();
 
     private List<AWeapon> weapons = new List<AWeapon>();
+
+    private bool isGrounded = false;
+
+    private bool checkinUngrounded = true;
 
     public List<AWeapon> GetWeapons()
     {
@@ -171,6 +174,9 @@ public class Actor : MonoBehaviour
 
     protected virtual void Start()
     {
+        if(actorAnimator)
+            StartCoroutine(SetUngroundedIn());
+
         UpdateIsMoving();
 
         groundDetector.onGrounded.AddListener(OnGrounded);
@@ -179,14 +185,42 @@ public class Actor : MonoBehaviour
 
     private void OnUngrounded(ContactDetector arg0)
     {
-        if(actorAnimator)
-            actorAnimator.SetGrounded(false);
+        if (actorAnimator && !checkinUngrounded)
+        {
+            if(!arg0.IsGrounded)
+            {
+                this.isGrounded = false;
+            }
+        }
+            
+    }
+
+    private IEnumerator SetUngroundedIn()
+    {
+        while (checkinUngrounded)
+        {
+            while (this.isGrounded)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+            yield return new WaitForSeconds(0.25f);
+
+            if (!this.isGrounded)
+            {
+                actorAnimator.SetGrounded(false);
+            }
+        }
     }
 
     private void OnGrounded(ContactDetector arg0)
     {
+        isGrounded = true;
+
         if (actorAnimator)
+        {
             actorAnimator.SetGrounded(true);
+        }
 
         jumpCount = 0;
     }
@@ -213,6 +247,7 @@ public class Actor : MonoBehaviour
         if (actorAnimator)
         {
             actorAnimator.TriggerJump();
+            actorAnimator.SetGrounded(false);
         }
     }
 

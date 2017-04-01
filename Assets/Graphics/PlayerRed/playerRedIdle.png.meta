@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: eb8e71f0199d2ea438203f0bd9354efa
-timeCreated: 1491082131
+timeCreated: 1491086775
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: playerIdle_0
     21300002: playerIdle_1
+    21300004: playerRedIdle_0
+    21300006: playerRedIdle_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -72,7 +74,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: playerIdle_0
+      name: playerRedIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -85,7 +87,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: playerIdle_1
+      name: playerRedIdle_1
       rect:
         serializedVersion: 2
         x: 64

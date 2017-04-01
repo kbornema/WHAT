@@ -20,6 +20,8 @@ public class GameManager : AManager<GameManager>
 
     [SerializeField]
     private Player playerPrefab;
+    [SerializeField]
+    private RuntimeAnimatorController[] playerControllers;
 
     [SerializeField]
     private GameObject acidRoot;
@@ -110,13 +112,15 @@ public class GameManager : AManager<GameManager>
                 instance.PlayerIndex = (Player.Index)i;
                 players[i] = instance;
                 numPlayers++;
-                OnNewPlayerSpawned(instance);
+                OnNewPlayerSpawned(instance, i);
             }
         }
     }
 
-    private void OnNewPlayerSpawned(Player player)
+    private void OnNewPlayerSpawned(Player player, int i)
     {
+        player.TheActor.TheAnimator.TheAnimator.runtimeAnimatorController = playerControllers[i];
+
         player.onKilled.AddListener(OnPlayerDeath);
         
         AWeapon weaponInstance = Instantiate(options.PlayerStartWeaponPrefab);

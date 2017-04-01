@@ -19,6 +19,7 @@ public class ContactDetector : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Assert(other);
+
         if (collidingObjects.Contains(other))
             return;
         

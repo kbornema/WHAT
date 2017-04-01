@@ -1,11 +1,15 @@
 fileFormatVersion: 2
-guid: 9691787f20f9a2d4c8f150569d501a03
-timeCreated: 1491082103
+guid: f9f59b93442ae09468a95368daa25e76
+timeCreated: 1491086755
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: playerFall_0
-    21300002: playerFall_1
+    21300000: playerJump_0
+    21300002: playerJump_1
+    21300004: playerJump_2
+    21300006: playerOrangeJump_0
+    21300008: playerOrangeJump_1
+    21300010: playerOrangeJump_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -72,28 +76,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: playerFall_0
+      name: playerOrangeJump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: playerFall_1
+      name: playerOrangeJump_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerOrangeJump_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

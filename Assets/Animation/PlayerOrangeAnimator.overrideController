@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: PlayerOrangeAnimator
+  m_Controller: {fileID: 9100000, guid: 090976a786a3a18409000f6a27eb9edb, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: faaa7deb433333a4bad752ea274d9d0f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8220dd6d16a6f0743bcca8a48bbec054, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6481ef62dac507149b095f60786e4d5b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8b1030a2d3fe76b4b8d54a2f875929d3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7dcfcd2b8e01e504d9827989fc736d4b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 104359e9abe7bff4e98233e12f12a00a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a63fe991adac71047930efd44e505d85, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 012453459a5593745bd89d4b0c78be5b, type: 2}

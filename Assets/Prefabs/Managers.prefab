@@ -144,9 +144,12 @@ MonoBehaviour:
   gameCam: {fileID: 0}
   playerPrefab: {fileID: 114661173771280794, guid: e41b7452b19cbbc4d9b216d0e566d178,
     type: 2}
+  playerControllers:
+  - {fileID: 9100000, guid: 090976a786a3a18409000f6a27eb9edb, type: 2}
+  - {fileID: 22100000, guid: b7fe3b10c3eac1244948519020d9f57f, type: 2}
   acidRoot: {fileID: 0}
   options:
-    playerStartWeaponPrefab: {fileID: 114067993526778888, guid: 37e7477861862f74987dec999a812b78,
+    playerStartWeaponPrefab: {fileID: 114063841734246348, guid: d6e24c0f2dda0bc48b5c520d9bc12b21,
       type: 2}
     deathPenality: -5
     respawnCooldown: 5
