@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114338699635315946}
   - component: {fileID: 114882772540040718}
   - component: {fileID: 114126727314494078}
+  - component: {fileID: 114608253013992372}
   m_Layer: 0
   m_Name: Events
   m_TagString: Untagged
@@ -110,6 +111,22 @@ MonoBehaviour:
   acidLowerPos: -6
   acidUpperPosMin: 2
   acidUpperPosMax: 3
+--- !u!114 &114608253013992372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392331473910066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d226caa1a75b2d45a46f4b8b37d3ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDur: 10
+  maxDur: 15
+  pointsOnWin: 0
+  isRunning: 0
+  fadeTime: 1
 --- !u!114 &114664715032622704
 MonoBehaviour:
   m_ObjectHideFlags: 1

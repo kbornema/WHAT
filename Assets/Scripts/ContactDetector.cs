@@ -21,7 +21,7 @@ public class ContactDetector : MonoBehaviour {
         Debug.Assert(other);
         if (collidingObjects.Contains(other))
             return;
-
+        
         collidingObjects.Add(other);
         onGrounded.Invoke(this);
     }

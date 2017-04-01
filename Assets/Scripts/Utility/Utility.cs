@@ -64,6 +64,19 @@ public static class Utility
         return t.position;
     }
 
+    public static void Shuffle<T>(List<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = UnityEngine.Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
     /*
     public static T CreateAsset<T>(string name, string folder = "") where T : ScriptableObject
     {

@@ -7,6 +7,9 @@ public class Actor : MonoBehaviour
     public class Event : UnityEngine.Events.UnityEvent<Actor> { }
 
     [SerializeField]
+    private ActorAnimator actorAnimator;
+
+    [SerializeField]
     private Player player;
     public Player ThePlayer { get { return player; } }
 
@@ -132,6 +135,9 @@ public class Actor : MonoBehaviour
     private void UpdateIsMoving()
     {
         this._isMoving = this._moveSpeed != 0.0f && (this._moveDirection.x != 0.0f || this._moveDirection.y != 0.0f);
+
+        if(actorAnimator)
+            actorAnimator.SetMove(this._isMoving);
     }
 
     private bool _isMoving;
@@ -168,10 +174,20 @@ public class Actor : MonoBehaviour
         UpdateIsMoving();
 
         groundDetector.onGrounded.AddListener(OnGrounded);
+        groundDetector.onUngrounded.AddListener(OnUngrounded);
+    }
+
+    private void OnUngrounded(ContactDetector arg0)
+    {
+        if(actorAnimator)
+            actorAnimator.SetGrounded(false);
     }
 
     private void OnGrounded(ContactDetector arg0)
     {
+        if (actorAnimator)
+            actorAnimator.SetGrounded(true);
+
         jumpCount = 0;
     }
 
@@ -190,9 +206,14 @@ public class Actor : MonoBehaviour
 
         //float reduction = (jumpCount + 1);
         //AddForce(new Vector2(0, jumpPower / reduction), ForceMode2D.Impulse);
-        _myRigidbody.velocity = new Vector2(0, jumpPower);
+        _myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, jumpPower);
 
         jumpCount++;
+
+        if (actorAnimator)
+        {
+            actorAnimator.TriggerJump();
+        }
     }
 
     public void ResetMovement()

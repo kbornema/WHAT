@@ -11,6 +11,9 @@ public class EventManager : AManager<EventManager>
 
     private List<AGameEvent> openEvents = new List<AGameEvent>();
 
+    private List<int> nextEventIds = new List<int>();
+    private int curEvent = 0;
+
     public bool IsAnyEventRunning { get { return currentEvents.Count > 0; } }
 
     [HideInInspector]
@@ -43,9 +46,18 @@ public class EventManager : AManager<EventManager>
 
     public AGameEvent StartRandomEvent()
     {
-        int eventId = Random.Range(0, openEvents.Count);
+        int eventId = nextEventIds[curEvent];
         AGameEvent even = openEvents[eventId];
         StartEvent(even);
+
+        curEvent++;
+
+        if (curEvent >= nextEventIds.Count)
+        {
+            curEvent = 0;
+            Utility.Shuffle(nextEventIds);
+        }
+
         return even;
     }
 
@@ -70,10 +82,15 @@ public class EventManager : AManager<EventManager>
         for (int i = 0; i < allGameEvents.Length; i++)
         {
             openEvents.Add(allGameEvents[i]);
+
+            nextEventIds.Add(i);
         }
+
+        Utility.Shuffle(nextEventIds);
 
         StartCoroutine(EventRoutine());
     }
+
 
     public bool StartEvent(AGameEvent gameEvent)
     {

@@ -46,9 +46,6 @@ public class Player : MonoBehaviour
     private string lookYInput = "LookY_";
     private string fire0Input = "Fire0_";
 
-    [SerializeField]
-    private AProjectile projectilePrefab;
-
     private bool inputBlocked = false;
 
     public bool IsDead { get; private set; }
