@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Event onRespawn = new Event();
 
+
+    private bool killedByEnvironment;
+
     private string moveXAxisInput = "MoveX_";
     private string jumpInput = "Jump_";
     private string lookXInput = "LookX_";
@@ -50,6 +53,8 @@ public class Player : MonoBehaviour
     private AProjectile projectilePrefab;
 
     private bool inputBlocked = false;
+
+    public bool IsDead { get; private set; }
 
     private SpriteRenderer[] spriteRenderers;
     private Color[] normalSpriteColors;
@@ -78,11 +83,15 @@ public class Player : MonoBehaviour
 
     private void OnZeroHealth(Health h, Health.EventInfo info)
     {
+        if (info.source == null)
+            killedByEnvironment = true;
+
         StartCoroutine(Respawn());
     }
 
     private IEnumerator Respawn()
     {
+        IsDead = true;
         inputBlocked = true;
         actor.ResetMovement();
 
@@ -91,9 +100,9 @@ public class Player : MonoBehaviour
         health.gameObject.layer = LayerUtil.NoneNumber;
 
         onKilled.Invoke(this);
-
-        ApplyColors(0.5f);
-
+        
+        ApplyColors(0.0f);
+        
         yield return new WaitForSeconds(GameManager.Instance.GameOptions.RespawnCooldown);
 
         health.Refill();
@@ -106,7 +115,14 @@ public class Player : MonoBehaviour
 
         onRespawn.Invoke(this);
 
-        yield return Invi(GameManager.Instance.GameOptions.RespawnInviTime, true);
+        if (killedByEnvironment)
+            actor.gameObject.transform.position = Vector3.zero;
+
+        else
+            yield return Invi(GameManager.Instance.GameOptions.RespawnInviTime, true);
+
+        killedByEnvironment = false;
+        IsDead = false;
     }
 
     private IEnumerator Invi(float inviTime, bool speedup)
@@ -208,6 +224,11 @@ public class Player : MonoBehaviour
 
             spriteRenderers[i].color = c;
         }
+    }
+
+    public void Kill()
+    {
+        health.ApplyHealth(new Health.EventInfo(-(health.MaxHitpoints + 0.5f), null));
     }
 
     [System.Serializable]

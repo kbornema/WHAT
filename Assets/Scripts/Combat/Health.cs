@@ -73,20 +73,14 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    public void ApplyDamage(EventInfo info)
+    public void ApplyHealth(EventInfo info)
     {
         ChangeHealth(info);
     }
-
-    public void ApplyHeal(EventInfo info)
-    {
-        ChangeHealth(info);
-    }
-
 
     public void Refill()
     {
-        ApplyHeal(new EventInfo(this.MaxHitpoints, null));
+        ApplyHealth(new EventInfo(this.MaxHitpoints, null));
     }
 
     public class EventInfo

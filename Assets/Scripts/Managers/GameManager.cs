@@ -82,6 +82,24 @@ public class GameManager : AManager<GameManager>
     {
         p.Stats.deaths++;
         p.Stats.lostPoints += options.DeathPenality;
+
+        if(CheckAllPlayerDead())
+        {
+            Debug.Log("all dead!");
+        }
+    }
+
+    private bool CheckAllPlayerDead()
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i] != null && !players[i].IsDead)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void SpawnEnemyRandom(Actor prefab)

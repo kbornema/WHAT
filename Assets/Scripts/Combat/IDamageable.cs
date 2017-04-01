@@ -1,4 +1,4 @@
 public interface IDamageable 
 {
-    void ApplyDamage(Health.EventInfo info);
+    void ApplyHealth(Health.EventInfo info);
 }

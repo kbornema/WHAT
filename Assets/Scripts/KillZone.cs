@@ -6,11 +6,16 @@ public class KillZone : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        ContactDetector detector = other.gameObject.GetComponent<ContactDetector>();
 
-        if(player)
+        if (detector)
+            return;
+
+        Health health = other.gameObject.GetComponent<Health>();
+
+        if(health && health.RootActor && health.RootActor.ThePlayer)
         {
-            Debug.Log("PlayerTouch");
+            health.RootActor.ThePlayer.Kill();
         }
 
         else
