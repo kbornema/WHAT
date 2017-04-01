@@ -14,6 +14,8 @@ public class SimpleProjectileWeapon : AWeapon
     protected AProjectile projectilePrefab;
 
     [SerializeField]
+    protected int shotsPerTrigger = 1;
+    
     protected bool canBeShot = true;
     public bool CanBeShot { get { return canBeShot; } }
 
@@ -21,11 +23,14 @@ public class SimpleProjectileWeapon : AWeapon
     {
          if(canBeShot)
         {
-            AProjectile instance = Instantiate(projectilePrefab);
+            for (int i = 0; i < shotsPerTrigger; i++)
+            {
+                AProjectile instance = Instantiate(projectilePrefab);
 
-            instance.gameObject.transform.position = spawnPos.transform.position;
+                instance.gameObject.transform.position = spawnPos.transform.position;
 
-            instance.InitProjectile(source, dir.Rotate((Random.value - 0.5f) * Mathf.Deg2Rad * spreadDegree));
+                instance.InitProjectile(source, dir.Rotate((Random.value - 0.5f) * Mathf.Deg2Rad * spreadDegree));
+            }
 
             StartCoroutine(WaitForReady());
             return true;

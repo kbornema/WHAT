@@ -9,6 +9,8 @@ public class EventManager : AManager<EventManager>
 
     private List<AGameEvent> currentEvents = new List<AGameEvent>();
 
+    private List<AGameEvent> openEvents = new List<AGameEvent>();
+
     public bool IsAnyEventRunning { get { return currentEvents.Count > 0; } }
 
     [HideInInspector]
@@ -21,7 +23,7 @@ public class EventManager : AManager<EventManager>
     public Event onEventWon = new Event();
 
     private AGameEvent[] allGameEvents;
-    public AGameEvent GetGameEvent(int id)
+    private AGameEvent GetGameEvent(int id)
     {
         if (id < 0 || id >= allGameEvents.Length)
             return null;
@@ -29,22 +31,22 @@ public class EventManager : AManager<EventManager>
         return allGameEvents[id];
     }
 
+    public void StartRandomEvent()
+    {
+        int eventId = Random.Range(0, openEvents.Count);
+        StartEvent(openEvents[eventId]);
+    }
+
     public int AllGameEventsCount { get { return allGameEvents.Length; } }
 
     protected override void OnAwake()
     {
         allGameEvents = GetComponentsInChildren<AGameEvent>();
-    }
 
-    public T GetSpecificEvent<T>() where T : AGameEvent
-    {
         for (int i = 0; i < allGameEvents.Length; i++)
         {
-            if (allGameEvents[i] is T)
-                return allGameEvents[i] as T;
+            openEvents.Add(allGameEvents[i]);
         }
-
-        return null;
     }
 
     public bool StartEvent(AGameEvent gameEvent)
@@ -53,6 +55,8 @@ public class EventManager : AManager<EventManager>
             return false;
 
         Debug.Log("StartEvent: " + gameEvent);
+        bool result = openEvents.Remove(gameEvent);
+        Debug.Assert(result);
         gameEvent.StartEvent();
         onEventStart.Invoke(gameEvent);
 
@@ -60,7 +64,6 @@ public class EventManager : AManager<EventManager>
         currentEvents.Add(gameEvent);
         return true;
     }
-
 
     public void EndEvent(AGameEvent gameEvent)
     {
@@ -85,6 +88,9 @@ public class EventManager : AManager<EventManager>
 
         bool result = currentEvents.Remove(gameEvent);
         Debug.Assert(result);
+
+        Debug.Assert(!openEvents.Contains(gameEvent));
+        openEvents.Add(gameEvent);
     }
 
     private void Update()

@@ -71,6 +71,11 @@ public class GameManager : AManager<GameManager>
     private void OnNewPlayerSpawned(Player player)
     {
         player.onKilled.AddListener(OnPlayerDeath);
+    
+
+        AWeapon weaponInstance = Instantiate(options.PlayerStartWeaponPrefab);
+        player.TheActor.AddWeapon(weaponInstance);
+        player.Weapon = weaponInstance;
     }
 
     private void OnPlayerDeath(Player p)
@@ -111,6 +116,10 @@ public class GameManager : AManager<GameManager>
     [System.Serializable]
     public class Options
     {
+        [SerializeField]
+        private AWeapon playerStartWeaponPrefab;
+        public AWeapon PlayerStartWeaponPrefab { get { return playerStartWeaponPrefab; } }
+
         [SerializeField]
         private int deathPenality = -5;
         public int DeathPenality { get { return deathPenality; } }

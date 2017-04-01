@@ -19,6 +19,10 @@ public class Actor : MonoBehaviour
     public GameObject Center { get { return _center; } }
 
     [SerializeField]
+    private GameObject _weaponRoot;
+    public GameObject WeaponRoot { get { return _weaponRoot; } }
+
+    [SerializeField]
     private GameObject _feet;
     public GameObject Feet { get { return _feet; } }
 
@@ -51,6 +55,30 @@ public class Actor : MonoBehaviour
     /// <summary>Is called when the lookDirection changes.</summary>
     [HideInInspector] 
     public Event onLookDirChanged = new Event();
+
+    private List<AWeapon> weapons = new List<AWeapon>();
+
+    public List<AWeapon> GetWeapons()
+    {
+        return weapons;
+    }
+
+    public void AddWeapon(AWeapon weapon)
+    {
+        Debug.Assert(!weapons.Contains(weapon));
+        weapons.Add(weapon);
+
+        weapon.gameObject.transform.SetParent(_weaponRoot.transform);
+        weapon.gameObject.transform.localPosition = Vector3.zero;
+    }
+
+    public void Remove(AWeapon weapon)
+    {
+        Debug.Assert(weapons.Contains(weapon));
+        weapons.Remove(weapon);
+
+        Destroy(weapon.gameObject);
+    }
 
     private Vector2 _lookDirection = new Vector2(0, 1.0f);
     public Vector2 LookDirection { get { return _lookDirection; } set { SetLookDir(value); } }

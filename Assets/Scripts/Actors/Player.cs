@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private AWeapon weapon;
-    public AWeapon Weapon { get { return weapon; } }
+    public AWeapon Weapon { get { return weapon; } set { weapon = value; } }
 
     [SerializeField]
     private Health health;
@@ -178,12 +178,6 @@ public class Player : MonoBehaviour
         }
 
         HandleWeapon();
-
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            EventManager.Instance.StartEvent(EventManager.Instance.GetGameEvent(0));
-        }
 	}
 
     private void HandleWeapon()
