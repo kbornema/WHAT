@@ -24,7 +24,12 @@ public class SurrenderEvent : AGameEvent
     {
         if(i.source && i.source.ThePlayer)
         {
-            GameManager.Instance.AddPlayerPoints(-3 * h.RootActor.PointsOnKill, i.source.ThePlayer);
+            NormalTurtle turtle = h.RootActor.GetComponent<NormalTurtle>();
+
+            if (turtle && turtle.IsSurrendering)
+            {
+                GameManager.Instance.AddPlayerPoints(-3 * h.RootActor.PointsOnKill, i.source.ThePlayer);
+            }
         }
     }
 

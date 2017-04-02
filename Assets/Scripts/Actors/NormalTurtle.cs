@@ -42,7 +42,7 @@ public class NormalTurtle : MonoBehaviour
     [SerializeField]
     private bool surrenderAllowed = false;
     private bool isSurrendering = false;
-    
+    public bool IsSurrendering { get { return isSurrendering; } }
 
     private void Start()
     {
