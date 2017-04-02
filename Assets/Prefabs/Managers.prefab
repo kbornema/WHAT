@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 114338699635315946}
   - component: {fileID: 114882772540040718}
   - component: {fileID: 114608253013992372}
+  - component: {fileID: 114070535506960452}
   m_Layer: 0
   m_Name: Events
   m_TagString: Untagged
@@ -311,6 +312,21 @@ MonoBehaviour:
   _damage:
     _damage: 10
   _source: {fileID: 0}
+--- !u!114 &114070535506960452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392331473910066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03bf16d08452174da384ff006f2f661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDur: 10
+  maxDur: 15
+  pointsOnWin: 0
+  isRunning: 0
 --- !u!114 &114301900084066894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,7 +430,7 @@ MonoBehaviour:
   - {fileID: 22100000, guid: b7fe3b10c3eac1244948519020d9f57f, type: 2}
   acidRoot: {fileID: 1366190550857774}
   options:
-    maxEnemies: 20
+    maxEnemies: 25
     playerStartWeaponPrefabs:
     - {fileID: 114067993526778888, guid: 37e7477861862f74987dec999a812b78, type: 2}
     - {fileID: 114063841734246348, guid: d6e24c0f2dda0bc48b5c520d9bc12b21, type: 2}
@@ -422,18 +438,22 @@ MonoBehaviour:
     - {fileID: 114063841734246348, guid: d6e24c0f2dda0bc48b5c520d9bc12b21, type: 2}
     grenadeLauncherPrefab: {fileID: 114551982311178332, guid: ee1cd070672ed0945b3bced7cd5768e0,
       type: 2}
-    deathPenality: -5
+    deathPenality: -2
     respawnCooldown: 5
     respawnInviTime: 2
     timeToFullDifficulty: 300
+    GrenadeChance: 0.1
   bloodSplatterPrefab: {fileID: 1212168641399330, guid: 17599196e8e24b14fb2f65ae755f9bc4,
     type: 2}
   enemyPrefabs:
     bombChance: 0.15
     bombIncrease: 0.25
+    goldenTurtleChance: 0.1
     bombTurtle: {fileID: 114673872992723284, guid: 4d69077877761f4438769ccdb3c9a919,
       type: 2}
     normalTurtle: {fileID: 114673872992723284, guid: 37cec8ba2ef8f304883ce867ec1f34c3,
+      type: 2}
+    goldenTurtule: {fileID: 114291302349734382, guid: 5b2d2464989d5ca409fef1a86d9e7202,
       type: 2}
   grenadePickupPrefab: {fileID: 1558402265415042, guid: b96e6351b15e33e40bd2253fa20ec0a9,
     type: 2}

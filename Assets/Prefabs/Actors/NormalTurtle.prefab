@@ -689,7 +689,7 @@ MonoBehaviour:
   _physicalCollider: {fileID: 60300180992598746}
   maxJumpCount: 1
   jumpCount: 0
-  pointsOnKill: 10
+  pointsOnKill: 1
   maxVeloX: 10
   maxVeloY: 15
   _moveSpeed: 1.5
@@ -739,8 +739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec13bea72413cb4d9f62db43c0c03be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodOffsetMin: 0
-  bloodOffsetMax: 0.2
   _rootObject: {fileID: 1450369562235972}
   _rootActor: {fileID: 114673872992723284}
   _maxHitpoints: 75

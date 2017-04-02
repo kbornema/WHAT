@@ -65,7 +65,7 @@ public class Health : MonoBehaviour, IDamageable
         onHealthChanged.Invoke(this, info);
 
 
-        //if(info.source != null)
+        if(_rootActor != info.source)
         {
             if (info.delta < 0.0f)
             {
@@ -73,12 +73,10 @@ public class Health : MonoBehaviour, IDamageable
 
                 Vector2 dir = VecUtil.RandDir();
                 
-                
                 float val = Random.Range(bloodOffsetMin, bloodOffsetMax);
                 Vector2 pos = _rootActor.Center.transform.pos2();
 
-
-                bloodInstance.gameObject.transform.position = pos + dir;
+                bloodInstance.gameObject.transform.position = pos + dir * val;
             }
         }
 

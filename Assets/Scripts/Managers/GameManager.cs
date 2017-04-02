@@ -17,6 +17,7 @@ public class GameManager : AManager<GameManager>
     [SerializeField]
     private float normalTimeScale = 1.5f;
     public float NormalTimeScale { get { return normalTimeScale; } }
+    public float TotalPoints { get; set; }
 
     [SerializeField]
     private GameCamera gameCam;
@@ -70,6 +71,9 @@ public class GameManager : AManager<GameManager>
     private float time = 0.0f;
 
     private int enemyCount = 0;
+
+    [HideInInspector]
+    public Health.Event onEnemyKilledEvent = new Health.Event();
 
     protected override void OnAwake()
     {
@@ -149,11 +153,11 @@ public class GameManager : AManager<GameManager>
     private void OnPlayerDeath(Player p)
     {
         p.Stats.deaths++;
-        p.Stats.lostPoints += options.DeathPenality;
+        AddPlayerPoints(options.DeathPenality, p);
 
         if(CheckAllPlayerDead())
         {
-            Debug.Log("all dead!");
+            Debug.Log("ToDo: Game Over einf�hren!! @Kai!");
         }
     }
 
@@ -202,16 +206,27 @@ public class GameManager : AManager<GameManager>
         }
     }
 
+
+    public void AddPlayerPoints(int p, Player player)
+    {
+        player.Stats.lostPoints += p;
+        TotalPoints += p;
+    }
+
     private void OnEnemyKilled(Health enemyHealth, Health.EventInfo info)
     {
         if(info.source && info.source.ThePlayer)
         {
             info.source.ThePlayer.Stats.kills++;
 
-            if(enemyHealth.RootActor)
-                info.source.ThePlayer.Stats.gainedPoints += enemyHealth.RootActor.PointsOnKill;
+            if (enemyHealth.RootActor)
+            {
+                AddPlayerPoints(enemyHealth.RootActor.PointsOnKill, info.source.ThePlayer);
+            }
+
         }
 
+        onEnemyKilledEvent.Invoke(enemyHealth, info);
         enemyCount--;
     }
     
@@ -260,6 +275,8 @@ public class GameManager : AManager<GameManager>
         [SerializeField]
         private float timeToFullDifficulty = 300.0f;
         public float TimeToFullDifficulty { get { return timeToFullDifficulty; } }
+
+        public float GrenadeChance = 0.1f;
     }
 
     [System.Serializable]
@@ -319,13 +336,18 @@ public class GameManager : AManager<GameManager>
     {
         public float bombChance = 0.15f;
         public float bombIncrease = 0.25f;
+        public float goldenTurtleChance = 0.1f;
 
         public Actor bombTurtle;
         public Actor normalTurtle;
-        
+        public Actor goldenTurtule;
+
         public Actor GetRandom(float difficulty)
         {
             float rand = Random.value;
+
+            if (rand < goldenTurtleChance)
+                return goldenTurtule;
 
             if (rand < bombChance + difficulty * bombIncrease)
                 return bombTurtle;
