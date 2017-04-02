@@ -5,6 +5,9 @@ using UnityEngine;
 public class SlowMoEvent : AGameEvent 
 {
     [SerializeField]
+    private float saturationFadeTime = 1.0f;
+
+    [SerializeField]
     private float timeScale = 0.5f;
 
     protected override void _StartEvent()
@@ -18,9 +21,33 @@ public class SlowMoEvent : AGameEvent
 
     private IEnumerator EndIn(float dur)
     {
+        StartCoroutine(Fade(0.0f));
+        
         yield return new WaitForSeconds(dur);
 
+        StartCoroutine(Fade(1.0f));
+
         EventManager.Instance.EndEvent(this);
+    }
+
+    private IEnumerator Fade(float val)
+    {
+        float curDur = 0.0f;
+        float t = 0.0f;
+
+        float startVal = GameManager.Instance.GameCam.SaturationEffect.GetSaturation();
+
+        while(curDur < saturationFadeTime)
+        {
+            t = curDur / saturationFadeTime;
+
+            float curVal = Mathf.Lerp(startVal, val, t);
+            GameManager.Instance.GameCam.SaturationEffect.SetSaturation(curVal);
+
+            curDur += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     protected override void _EndEvent()

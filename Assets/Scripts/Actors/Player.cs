@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     private string lookXInput = "LookX_";
     private string lookYInput = "LookY_";
     private string fire0Input = "Fire0_";
+    private string fire1Input = "Fire1_";
 
     private bool inputBlocked = false;
 
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour
         lookXInput += indexIdString;
         lookYInput += indexIdString;
         fire0Input += indexIdString;
+        fire1Input += indexIdString;
 
         health.onZeroHealth.AddListener(OnZeroHealth);
         health.onHealthChanged.AddListener(OnHealthChanged);
@@ -208,19 +210,40 @@ public class Player : MonoBehaviour
 
     private void HandleWeapon()
     {
-        if (Input.GetButtonDown(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Click)
+        if(weaponLeft)
         {
-            weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
-        }
+            if (Input.GetButtonDown(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Click)
+            {
+                weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
+            }
 
-        else if (Input.GetButton(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Press)
-        {
-            weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
-        }
+            else if (Input.GetButton(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Press)
+            {
+                weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
+            }
 
-        else if (Input.GetButtonUp(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Release)
+            else if (Input.GetButtonUp(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Release)
+            {
+                weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
+            }
+        }
+    
+        if(weaponRight)
         {
-            weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
+            if (Input.GetButtonDown(fire1Input) && weaponRight.Mode == AWeapon.FireMode.Click)
+            {
+                weaponRight.TryShoot(actor, actor.LookDirection.normalized);
+            }
+
+            else if (Input.GetButton(fire1Input) && weaponRight.Mode == AWeapon.FireMode.Press)
+            {
+                weaponRight.TryShoot(actor, actor.LookDirection.normalized);
+            }
+
+            else if (Input.GetButtonUp(fire1Input) && weaponRight.Mode == AWeapon.FireMode.Release)
+            {
+                weaponRight.TryShoot(actor, actor.LookDirection.normalized);
+            }
         }
     }
 
