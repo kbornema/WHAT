@@ -159,9 +159,11 @@ public class GameManager : AManager<GameManager>
 
         if(CheckAllPlayerDead())
         {
-            if(leben == 0)
+            if (leben == 0)
+            {
+                SoundManager.Instance.StartSingleSound(SoundManager.Sound.GameOver);
                 Application.LoadLevel("Highscore");
-
+            }
             leben--;
            
         }
