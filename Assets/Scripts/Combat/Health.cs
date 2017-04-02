@@ -8,6 +8,9 @@ public class Health : MonoBehaviour, IDamageable
 {
     public class Event : UnityEvent<Health, EventInfo> { }
 
+    private float bloodOffsetMin = -0.1f;
+    private float bloodOffsetMax = 0.1f;
+
     [HideInInspector] 
     public Event onHealthChanged = new Event();
     [HideInInspector] 
@@ -60,6 +63,25 @@ public class Health : MonoBehaviour, IDamageable
         this._curHitpoints += info.delta;
 
         onHealthChanged.Invoke(this, info);
+
+
+        //if(info.source != null)
+        {
+            if (info.delta < 0.0f)
+            {
+                GameObject bloodInstance = Instantiate(GameManager.Instance.BloodSplatterPrefab);
+
+                Vector2 dir = VecUtil.RandDir();
+                
+                
+                float val = Random.Range(bloodOffsetMin, bloodOffsetMax);
+                Vector2 pos = _rootActor.Center.transform.pos2();
+
+
+                bloodInstance.gameObject.transform.position = pos + dir;
+            }
+        }
+
 
         if (this._curHitpoints > this._maxHitpoints)
         {

@@ -463,7 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 114908113831337400}
-  weapon: {fileID: 0}
+  weaponLeft: {fileID: 0}
+  weaponRight: {fileID: 0}
   health: {fileID: 114804176320249318}
   index: 0
   padDeadzone: 0.5
@@ -487,6 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec13bea72413cb4d9f62db43c0c03be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodOffsetMin: 0
+  bloodOffsetMax: 0.2
   _rootObject: {fileID: 1369151507082644}
   _rootActor: {fileID: 114908113831337400}
   _maxHitpoints: 100
@@ -545,6 +548,8 @@ MonoBehaviour:
   maxJumpCount: 2
   jumpCount: 0
   pointsOnKill: 0
+  maxVeloX: 10
+  maxVeloY: 15
   _moveSpeed: 5
 --- !u!212 &212354292041462044
 SpriteRenderer:

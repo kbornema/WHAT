@@ -504,6 +504,8 @@ MonoBehaviour:
   maxJumpCount: 2
   jumpCount: 0
   pointsOnKill: 50
+  maxVeloX: 10
+  maxVeloY: 15
   _moveSpeed: 5
 --- !u!114 &114785635896725780
 MonoBehaviour:
@@ -595,10 +597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec13bea72413cb4d9f62db43c0c03be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodOffsetMin: 0
+  bloodOffsetMax: 0.2
   _rootObject: {fileID: 1450369562235972}
   _rootActor: {fileID: 114673872992723284}
-  _maxHitpoints: 50
-  _curHitpoints: 50
+  _maxHitpoints: 40
+  _curHitpoints: 40
 --- !u!212 &212055526918782954
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,7 +36,15 @@ public class GameManager : AManager<GameManager>
     public Options GameOptions { get { return options; } }
 
     [SerializeField]
+    private GameObject bloodSplatterPrefab;
+    public GameObject BloodSplatterPrefab { get { return bloodSplatterPrefab; } }
+
+    [SerializeField]
     private EnemyPrefabs enemyPrefabs;
+
+    [SerializeField]
+    private GameObject grenadePickupPrefab;
+    public GameObject GrenadePickupPrefab { get { return grenadePickupPrefab; } }
 
     [SerializeField]
     private DifficultySettings settings;
@@ -132,6 +140,10 @@ public class GameManager : AManager<GameManager>
         AWeapon weaponInstance = Instantiate(options.PlayerStartWeaponPrefabs[i]);
         player.TheActor.AddWeapon(weaponInstance);
         player.WeaponLeft = weaponInstance;
+
+        AWeapon weaponInstanceGrenade = Instantiate(options.GrenadeLauncherPrefab);
+        player.TheActor.AddWeapon(weaponInstanceGrenade);
+        player.WeaponRight = weaponInstanceGrenade;
     }
 
     private void OnPlayerDeath(Player p)
@@ -228,6 +240,10 @@ public class GameManager : AManager<GameManager>
         [SerializeField]
         private AWeapon[] playerStartWeaponPrefabs;
         public AWeapon[] PlayerStartWeaponPrefabs { get { return playerStartWeaponPrefabs; } }
+
+        [SerializeField]
+        private AWeapon grenadeLauncherPrefab;
+        public AWeapon GrenadeLauncherPrefab { get { return grenadeLauncherPrefab; } }
 
         [SerializeField]
         private int deathPenality = -5;

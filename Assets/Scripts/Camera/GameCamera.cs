@@ -18,7 +18,11 @@ public class GameCamera : MonoBehaviour
 
     [SerializeField]
     private InvertColors invertCols;
-    public InvertColors InvertCols { get { return invertCols; } } 
+    public InvertColors InvertCols { get { return invertCols; } }
+
+    [SerializeField]
+    private Saturation saturation;
+    public Saturation SaturationEffect { get { return saturation; } } 
 
     private float curShakeDur;
     private float shakePower;

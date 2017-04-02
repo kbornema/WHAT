@@ -74,13 +74,15 @@ public abstract class AProjectile : MonoBehaviour
     public void InitProjectile(Actor sourceActor, Vector2 direction)
     {
         this._sourceActor = sourceActor;
-        this._damageSource.Source = this._sourceActor;
+
+        if(this._damageSource)
+            this._damageSource.Source = this._sourceActor;
 
         if (_inheritTagFromSource)
         {
             gameObject.tag = this._sourceActor.gameObject.tag;
 
-            if(gameObject != _damageSource.gameObject)
+            if(this._damageSource && gameObject != _damageSource.gameObject)
                 _damageSource.tag = this._sourceActor.gameObject.tag;
         }
 

@@ -17,14 +17,31 @@ public class SimpleProjectileWeapon : AWeapon
     protected AProjectile projectilePrefab;
 
     [SerializeField]
+    protected int curAmmo = 0;
+    [SerializeField]
+    protected int maxAmmo = 0;
+    [SerializeField]
+    protected bool usesAmmo = false;
+
+    [SerializeField]
     protected int shotsPerTrigger = 1;
     
     protected bool canBeShot = true;
     public bool CanBeShot { get { return canBeShot; } }
 
+    public void AddAmmo(int amount)
+    {
+        this.curAmmo = Mathf.Clamp(this.curAmmo + amount, 0, this.maxAmmo + 1);
+    }
+
     public override bool TryShoot(Actor source, Vector2 dir)
     {
-         if(canBeShot)
+        if (usesAmmo && curAmmo <= 0)
+        {
+            return false;
+        }
+
+        if(canBeShot)
         {
             for (int i = 0; i < shotsPerTrigger; i++)
             {
@@ -38,6 +55,10 @@ public class SimpleProjectileWeapon : AWeapon
             source.AddForce(-dir * knockback, ForceMode2D.Impulse);
 
             StartCoroutine(WaitForReady());
+
+            if (usesAmmo)
+                curAmmo--;
+
             return true;
         }
 
