@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114366896719966366}
   - component: {fileID: 114136099120322086}
   - component: {fileID: 95366588244056760}
+  - component: {fileID: 114408527960982922}
   m_Layer: 8
   m_Name: GoldenTurtle
   m_TagString: Hostile
@@ -184,7 +185,6 @@ GameObject:
   - component: {fileID: 4883467630495196}
   - component: {fileID: 114283017973278914}
   - component: {fileID: 50174528660514038}
-  - component: {fileID: 114476898034719248}
   - component: {fileID: 60386355185009556}
   m_Layer: 9
   m_Name: health
@@ -213,7 +213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810837828251808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6434405, y: -2.5436878, z: 0}
+  m_LocalPosition: {x: 1.4473451, y: -2.3185954, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4609500744703972}
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95366588244056760}
   jumpTime: 0.5
-  dieTime: 0.5
+  dieTime: 1
   runTime: 0.75
   idleTime: 0.75
   fallTime: 0.75
@@ -624,6 +624,7 @@ MonoBehaviour:
   actorDetector: {fileID: 114759838555106844}
   jumpDetector: {fileID: 114353388638651020}
   actor: {fileID: 114291302349734382}
+  playDeathAnim: 1
   harmlessAtDay: 1
   explodeOnCloseness: 0
   explodeRadius: 2
@@ -687,8 +688,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootObject: {fileID: 1810837828251808}
   _rootActor: {fileID: 114291302349734382}
-  _maxHitpoints: 100
-  _curHitpoints: 100
+  _maxHitpoints: 150
+  _curHitpoints: 150
 --- !u!114 &114291302349734382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -738,17 +739,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6fcb85a5625cb41802304c7a444644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114476898034719248
+--- !u!114 &114408527960982922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952667343544586}
+  m_GameObject: {fileID: 1810837828251808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e9eb454ad852d45baf40831716d612, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ac870986312b0e4f944810d922620a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actor: {fileID: 114291302349734382}
+  lifeTime: 8
 --- !u!114 &114677961381047660
 MonoBehaviour:
   m_ObjectHideFlags: 1

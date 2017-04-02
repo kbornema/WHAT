@@ -58,7 +58,7 @@ MonoBehaviour:
   spreadDegree: 2
   projectilePrefab: {fileID: 114921214529390078, guid: 484668c51e517c246b872f1f23ffd9a8,
     type: 2}
-  curAmmo: 2
-  maxAmmo: 2
+  curAmmo: 3
+  maxAmmo: 3
   usesAmmo: 1
   shotsPerTrigger: 1

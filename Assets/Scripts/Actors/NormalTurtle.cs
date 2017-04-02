@@ -14,6 +14,9 @@ public class NormalTurtle : MonoBehaviour
     private Actor actor;
 
     [SerializeField]
+    private bool playDeathAnim = false;
+
+    [SerializeField]
     private bool harmlessAtDay = true;
     [SerializeField]
     private bool explodeOnCloseness = true;
@@ -35,15 +38,48 @@ public class NormalTurtle : MonoBehaviour
     private Vector2 toTargetEnemy;
 
     private float lifeTime = 0.0f;
+    
 
     private void Start()
     {
         StartCoroutine(Think());
 
+
+            actor.TheHealth.onZeroHealth.AddListener(OnZeroHealth);
+
         jumpDetector.onTriggerEnter.AddListener(OnJumpTrigger);
 
         actorDetector.onEnter.AddListener(OnActorEnter);
         actorDetector.onExit.AddListener(OnActorExit);
+    }
+
+    private void OnZeroHealth(Health arg0, Health.EventInfo arg1)
+    {
+
+        if(playDeathAnim)
+        {
+            arg0.gameObject.layer = LayerUtil.NoneNumber;
+
+            actor.TheAnimator.TriggerDie();
+
+            StartCoroutine(DestroyIn());
+        }
+
+        float rand = Random.value;
+
+        if(rand < GameManager.Instance.GameOptions.GrenadeChance)
+        {
+            GameObject grenadePickup = Instantiate(GameManager.Instance.GrenadePickupPrefab);
+            grenadePickup.gameObject.transform.position = actor.Center.transform.position;
+        }
+
+    }
+
+    private IEnumerator DestroyIn()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        Destroy(actor.gameObject);
     }
 
     private void OnActorEnter(ActorDetector arg0, Actor arg1)
