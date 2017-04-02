@@ -11,16 +11,44 @@ public class Granade : AProjectile
     [SerializeField]
     private AProjectile explosionPrefab;
 
+    [SerializeField]
+    private bool explodeAfterTime = true;
+
     protected override void InitProjectile(Vector2 dir)
     {
         this._rigidbody.AddForce(dir * force, ForceMode2D.Impulse);
-        StartCoroutine(GranadeRoutine());
+
+        if (explodeAfterTime)
+        {
+            StartCoroutine(GranadeRoutine());
+        }
     }
 
     private IEnumerator GranadeRoutine()
     {
         yield return new WaitForSeconds(lifeTime);
 
+        Explode();
+    }
+
+    private bool isQuitting;
+
+    void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+
+    void OnDestroy()
+    {
+        if (!isQuitting)
+        {
+
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
         AProjectile explosion = Instantiate(explosionPrefab);
 
         explosion.InitProjectile(this._sourceActor, Vector2.zero);
