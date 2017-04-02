@@ -37,8 +37,12 @@ public class SetHeadDing : MonoBehaviour {
     //    transform.position = pos;
     //}
 
-    public void DerSpiegelOfDoom(Vector3 vec)
+    public void DerSpiegelOfDoom(Vector3 vec, Player.Index PlayerIndex)
     {
+        if(vec.x == -1)
+        {
+           
+        }
 
     }
 }
