@@ -268,6 +268,7 @@ public class Player : MonoBehaviour
     public void Kill()
     {
         health.ApplyHealth(new Health.EventInfo(-(health.MaxHitpoints + 0.5f), null));
+
     }
 
     [System.Serializable]

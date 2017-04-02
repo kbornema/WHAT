@@ -121,7 +121,7 @@ public class EventManager : AManager<EventManager>
         //Debug.Log("EndEvent: " + gameEvent);
 
         gameEvent.EndEvent();
-        onEventWon.Invoke(gameEvent);
+        onEventEnd.Invoke(gameEvent);
 
         if (gameEvent.GetGameEventWon())
         {

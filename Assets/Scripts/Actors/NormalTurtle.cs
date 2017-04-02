@@ -38,7 +38,11 @@ public class NormalTurtle : MonoBehaviour
     private Vector2 toTargetEnemy;
 
     private float lifeTime = 0.0f;
-    
+
+    [SerializeField]
+    private bool surrenderAllowed = false;
+    private bool isSurrendering = false;
+    public bool IsSurrendering { get { return isSurrendering; } }
 
     private void Start()
     {
@@ -51,11 +55,33 @@ public class NormalTurtle : MonoBehaviour
 
         actorDetector.onEnter.AddListener(OnActorEnter);
         actorDetector.onExit.AddListener(OnActorExit);
+
+        EventManager.Instance.onEventStart.AddListener(OnEventStart);
+        EventManager.Instance.onEventEnd.AddListener(OnEventEnd);
     }
 
+    private void OnEventStart(AGameEvent arg0)
+    {
+        if (surrenderAllowed && arg0 is SurrenderEvent && actor.TheAnimator)
+        {
+            actor.TheAnimator.TriggerDie();
+            isSurrendering = true;
+            actor.SetMoveX(0.0f);
+        }
+    }
+
+    private void OnEventEnd(AGameEvent arg0)
+    {
+        if (surrenderAllowed && arg0 is SurrenderEvent && actor.TheAnimator)
+        {
+            actor.TheAnimator.TriggerRespawn();
+            isSurrendering = false;
+            DecideDirection();
+        }
+    }
+    
     private void OnZeroHealth(Health arg0, Health.EventInfo arg1)
     {
-
         if(playDeathAnim)
         {
             arg0.gameObject.layer = LayerUtil.NoneNumber;
@@ -155,6 +181,9 @@ public class NormalTurtle : MonoBehaviour
 
     private void DecideDirection()
     {
+        if (isSurrendering)
+            return;
+
         float rand = Random.value;
 
         if(rand < 0.33)

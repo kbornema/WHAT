@@ -88,6 +88,8 @@ public class Health : MonoBehaviour, IDamageable
 
         else if(this._curHitpoints <= 0)
         {
+            if(_rootActor.ThePlayer != null)
+                SoundManager.Instance.StartSingleSound(SoundManager.Sound.Dying);
             this._curHitpoints = 0;
             onZeroHealth.Invoke(this, info);
         }

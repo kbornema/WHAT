@@ -88,6 +88,9 @@ public class ActorAnimator : MonoBehaviour
     {
         animator.SetBool(IS_GROUNDED_BOOL, val);
     }
-
-
+    
+    public void TriggerRespawn()
+    {
+        animator.SetTrigger("respawn");
+    }
 }

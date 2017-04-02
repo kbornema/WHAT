@@ -99,7 +99,6 @@ public class SetHeadDing : MonoBehaviour {
 
     internal void CurBomb(int v)
     {
-        Debug.Log(v);
         curBomb = v;
     }
     //public void UpdatePosition(Vector3 pos)

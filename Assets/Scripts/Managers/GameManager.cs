@@ -209,7 +209,16 @@ public class GameManager : AManager<GameManager>
 
     public void AddPlayerPoints(int p, Player player)
     {
-        player.Stats.lostPoints += p;
+        if(p > 0)
+        {
+            player.Stats.gainedPoints += p;
+        }
+
+        else if(p < 0)
+        {
+            player.Stats.lostPoints += p;
+        }
+
         TotalPoints += p;
     }
 
