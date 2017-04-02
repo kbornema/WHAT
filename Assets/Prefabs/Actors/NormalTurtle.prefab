@@ -268,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450369562235972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0769854, y: -2.591403, z: 0}
+  m_LocalPosition: {x: 2.9044752, y: -3.162232, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4099282132476032}
@@ -620,6 +620,7 @@ MonoBehaviour:
   actorDetector: {fileID: 114278906404316200}
   jumpDetector: {fileID: 114418203416512772}
   actor: {fileID: 114673872992723284}
+  playDeathAnim: 0
   harmlessAtDay: 1
   explodeOnCloseness: 0
   explodeRadius: 2
@@ -627,6 +628,7 @@ MonoBehaviour:
   thinkTimerMin: 0.5
   thinkTimerMax: 0.75
   timeBeforeExplosion: 2
+  surrenderAllowed: 1
 --- !u!114 &114278906404316200
 MonoBehaviour:
   m_ObjectHideFlags: 1
