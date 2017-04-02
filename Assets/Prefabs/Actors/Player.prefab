@@ -466,6 +466,7 @@ MonoBehaviour:
   textureArray:
   - {fileID: 21300000, guid: f26d721976a884c4da90d0d95efdf32f, type: 3}
   - {fileID: 21300000, guid: 78ffb0b11bb72334394c4f7747d997e4, type: 3}
+  actor: {fileID: 114908113831337400}
 --- !u!114 &114661173771280794
 MonoBehaviour:
   m_ObjectHideFlags: 1
