@@ -518,8 +518,8 @@ MonoBehaviour:
   animator: {fileID: 95873853419983422}
   jumpTime: 0.3
   dieTime: 0.5
-  runTime: 0.75
-  idleTime: 0.5
+  runTime: 1
+  idleTime: 0.75
   fallTime: 0.25
 --- !u!114 &114908113831337400
 MonoBehaviour:

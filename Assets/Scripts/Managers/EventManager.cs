@@ -32,6 +32,10 @@ public class EventManager : AManager<EventManager>
     public bool IsDark { get; set; }
 
     [SerializeField]
+    private ParticleSystem windParticles;
+    public ParticleSystem WindParticles { get { return windParticles; } }
+
+    [SerializeField]
     private float timeBetweenEvents = 5.0f;
     public bool isRunning = true;
 

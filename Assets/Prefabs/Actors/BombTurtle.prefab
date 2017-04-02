@@ -133,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1732983838617228
 GameObject:
   m_ObjectHideFlags: 1
@@ -270,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450369562235972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.72514, y: -1.1579558, z: 0}
+  m_LocalPosition: {x: 2.6026757, y: -0.1698758, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4099282132476032}
@@ -561,6 +561,7 @@ MonoBehaviour:
     type: 2}
   thinkTimerMin: 0.25
   thinkTimerMax: 1
+  timeBeforeExplosion: 2
 --- !u!114 &114837357865201732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -596,8 +597,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootObject: {fileID: 1450369562235972}
   _rootActor: {fileID: 114673872992723284}
-  _maxHitpoints: 100
-  _curHitpoints: 100
+  _maxHitpoints: 50
+  _curHitpoints: 50
 --- !u!212 &212055526918782954
 SpriteRenderer:
   m_ObjectHideFlags: 1

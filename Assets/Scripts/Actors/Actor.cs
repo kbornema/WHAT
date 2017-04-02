@@ -64,6 +64,11 @@ public class Actor : MonoBehaviour
 
     private bool checkinUngrounded = true;
 
+    [SerializeField]
+    private float maxVeloX = 10.0f;
+    [SerializeField]
+    private float maxVeloY = 15.0f;
+
     public List<AWeapon> GetWeapons()
     {
         return weapons;
@@ -154,6 +159,13 @@ public class Actor : MonoBehaviour
     public void AddForce(Vector2 force, ForceMode2D mode = ForceMode2D.Impulse)
     {
         this._myRigidbody.AddForce(force, mode);
+
+        Vector2 velo = this._myRigidbody.velocity;
+
+        velo.x = Mathf.Clamp(velo.x, -maxVeloX, maxVeloX);
+        velo.y = Mathf.Clamp(velo.y, -maxVeloY, maxVeloY);
+
+        this._myRigidbody.velocity = velo;
     }
 
     //might be changed to virtual and protected:
@@ -238,10 +250,7 @@ public class Actor : MonoBehaviour
         if (jumpCount >= maxJumpCount)
             return;
 
-        //float reduction = (jumpCount + 1);
-        AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
-
-        //_myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, jumpPower);
+        _myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, jumpPower);
 
         jumpCount++;
 

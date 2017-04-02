@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: debab02f9f410ce488f3b9f7e533c25b
-timeCreated: 1491080203
+guid: 256a1227981f31b4e9e9b9661d8b4ed9
+timeCreated: 1491103670
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SewerWall_0
-    21300002: SewerWall_1
-    21300004: SewerWall_2
-    21300006: SewerWall_3
-    21300008: SewerWall_4
+    21300000: TortleFahne_0
+    21300002: TortleFahne_1
+    21300004: TortleFahne_2
+    21300006: TortleFahne_3
+    21300008: TortleFahne_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -71,79 +71,71 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SewerWall_0
+      name: TortleFahne_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: SewerWall_1
+      name: TortleFahne_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: SewerWall_2
+      name: TortleFahne_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: SewerWall_3
+      name: TortleFahne_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: SewerWall_4
+      name: TortleFahne_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

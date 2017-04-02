@@ -129,9 +129,9 @@ public class GameManager : AManager<GameManager>
 
         player.onKilled.AddListener(OnPlayerDeath);
         
-        AWeapon weaponInstance = Instantiate(options.PlayerStartWeaponPrefab);
+        AWeapon weaponInstance = Instantiate(options.PlayerStartWeaponPrefabs[i]);
         player.TheActor.AddWeapon(weaponInstance);
-        player.Weapon = weaponInstance;
+        player.WeaponLeft = weaponInstance;
     }
 
     private void OnPlayerDeath(Player p)
@@ -226,8 +226,8 @@ public class GameManager : AManager<GameManager>
         public int MaxEnemies { get { return maxEnemies; } }
 
         [SerializeField]
-        private AWeapon playerStartWeaponPrefab;
-        public AWeapon PlayerStartWeaponPrefab { get { return playerStartWeaponPrefab; } }
+        private AWeapon[] playerStartWeaponPrefabs;
+        public AWeapon[] PlayerStartWeaponPrefabs { get { return playerStartWeaponPrefabs; } }
 
         [SerializeField]
         private int deathPenality = -5;

@@ -237,11 +237,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8229bde9d5dc0a241b1e5db82a846272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockback: 7.5
+  _knockback: 4
+  randKnockback: 0
   _mode: 0
   _hitCooldown: 0.5
   _damage:
-    _damage: 10
+    _damage: 20
   _source: {fileID: 0}
 --- !u!212 &212113433725102878
 SpriteRenderer:

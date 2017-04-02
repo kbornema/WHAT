@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 60300180992598746}
   - component: {fileID: 114956937379043780}
   - component: {fileID: 114201227262131012}
+  - component: {fileID: 95063846813312418}
   m_Layer: 8
   m_Name: NormalTurtle
   m_TagString: Hostile
@@ -138,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1639084482569506
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4099282132476032}
   - component: {fileID: 212055526918782954}
+  - component: {fileID: 114360923905762638}
   m_Layer: 0
   m_Name: visual
   m_TagString: Untagged
@@ -253,7 +255,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1692438630719218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.469, y: 0.371, z: 0}
+  m_LocalPosition: {x: 0.444, y: 0.349, z: 0}
   m_LocalScale: {x: 0.2701617, y: 0.12676492, z: 0.27016178}
   m_Children: []
   m_Father: {fileID: 4099282132476032}
@@ -266,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450369562235972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48163795, y: -1.8721743, z: 0}
+  m_LocalPosition: {x: 3.1027966, y: -1.125505, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4099282132476032}
@@ -298,7 +300,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1228776160977116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46900004, y: 0.371, z: 0}
+  m_LocalPosition: {x: 0.444, y: 0.349, z: 0}
   m_LocalScale: {x: 0.17498368, y: 0.009254407, z: 0.18419334}
   m_Children: []
   m_Father: {fileID: 4099282132476032}
@@ -324,7 +326,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1510656335735032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.473, y: 0.373, z: 0}
+  m_LocalPosition: {x: 0.448, y: 0.351, z: 0}
   m_LocalScale: {x: 0.26000008, y: 0.50000006, z: 0}
   m_Children: []
   m_Father: {fileID: 4099282132476032}
@@ -550,6 +552,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.268968, y: 0.13662282}
+--- !u!95 &95063846813312418
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450369562235972}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: d3c5a4bafdc9fef4a89a630c174dd597, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114065367125563704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,6 +626,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 0}
   thinkTimerMin: 0.5
   thinkTimerMax: 0.75
+  timeBeforeExplosion: 2
 --- !u!114 &114278906404316200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,6 +638,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4945b6606f419f844aa537edf57961db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114360923905762638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639084482569506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fd0febf5ad6ca4d9de779bcf3e0842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95063846813312418}
+  jumpTime: 0.5
+  dieTime: 0.5
+  runTime: 0.75
+  idleTime: 0.75
+  fallTime: 0.75
 --- !u!114 &114418203416512772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -640,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89a89c6dbf336a48ac1e71b5f5846bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorAnimator: {fileID: 0}
+  actorAnimator: {fileID: 114360923905762638}
   player: {fileID: 0}
   health: {fileID: 114870220862797324}
   _center: {fileID: 1450369562235972}
@@ -653,6 +690,8 @@ MonoBehaviour:
   maxJumpCount: 1
   jumpCount: 0
   pointsOnKill: 10
+  maxVeloX: 10
+  maxVeloY: 15
   _moveSpeed: 1.5
 --- !u!114 &114785635896725780
 MonoBehaviour:
@@ -738,7 +777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8229bde9d5dc0a241b1e5db82a846272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockback: 10
+  _knockback: 7.5
+  randKnockback: 0
   _mode: 1
   _hitCooldown: 0.25
   _damage:
@@ -775,7 +815,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1870390967
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a6366cf6a609d2f40ad66821237abb00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ca669c437a43f540a9dc3eb8fd01222, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

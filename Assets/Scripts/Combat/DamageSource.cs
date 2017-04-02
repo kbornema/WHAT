@@ -9,6 +9,8 @@ public class DamageSource : MonoBehaviour
     public enum DamageMode { OnEnter, OnStay, OnExit }
     [SerializeField]
     private float _knockback = 0.0f;
+    [SerializeField]
+    private bool randKnockback = false;
     [SerializeField] 
     private DamageMode _mode = DamageMode.OnEnter;
     [SerializeField] 
@@ -126,10 +128,19 @@ public class DamageSource : MonoBehaviour
 
                 if (h && h.RootActor)
                 {
-                    Vector2 knockbackDir = h.RootActor.Center.transform.pos2() - gameObject.transform.pos2();
-                    knockbackDir.Normalize();
 
-                    h.RootActor.AddForce(knockbackDir * _knockback, ForceMode2D.Impulse);
+                    if(randKnockback)
+                    {
+                        h.RootActor.AddForce(VecUtil.RandDir() * _knockback, ForceMode2D.Impulse);
+                    }
+
+                    else
+                    {
+                        Vector2 knockbackDir = h.RootActor.Center.transform.pos2() - gameObject.transform.pos2();
+                        knockbackDir.Normalize();
+                        h.RootActor.AddForce(knockbackDir * _knockback, ForceMode2D.Impulse);
+                    }
+        
                 }
             }
 

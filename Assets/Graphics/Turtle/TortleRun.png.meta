@@ -1,10 +1,15 @@
 fileFormatVersion: 2
-guid: a6366cf6a609d2f40ad66821237abb00
-timeCreated: 1491000304
+guid: 3ca669c437a43f540a9dc3eb8fd01222
+timeCreated: 1491103677
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Tortle_0
+    21300000: TortleRun_0
+    21300002: TortleRun_1
+    21300004: TortleRun_2
+    21300006: TortleRun_3
+    21300008: TortleRun_4
+    21300010: TortleRun_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -71,7 +76,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tortle_0
+      name: TortleRun_0
       rect:
         serializedVersion: 2
         x: 0
@@ -79,7 +84,72 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.32841915, y: 0.14184579}
+      pivot: {x: 0.32, y: 0.14}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TortleRun_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TortleRun_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TortleRun_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TortleRun_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TortleRun_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.32, y: 0.14}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

@@ -21,7 +21,9 @@ public class GravityEvent : AGameEvent
 
     private IEnumerator CancelInvoke(float dur)
     {
+        EventManager.Instance.WindParticles.Play();
         yield return new WaitForSeconds(dur);
+        EventManager.Instance.WindParticles.Stop();
         EventManager.Instance.EndEvent(this);
     }
 

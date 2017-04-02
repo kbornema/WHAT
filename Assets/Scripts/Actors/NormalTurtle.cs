@@ -28,8 +28,13 @@ public class NormalTurtle : MonoBehaviour
     private float thinkTimerMax = 1.0f;
     private bool isThinking = true;
 
+    [SerializeField]
+    private float timeBeforeExplosion = 2.0f;
+
     private Actor targetEnemy;
     private Vector2 toTargetEnemy;
+
+    private float lifeTime = 0.0f;
 
     private void Start()
     {
@@ -73,6 +78,8 @@ public class NormalTurtle : MonoBehaviour
 
     private void Update()
     {
+        lifeTime += Time.deltaTime;
+
         if(targetEnemy && (EventManager.Instance.IsDark || !harmlessAtDay))
         {
             if (targetEnemy.TheHealth.CurHitpoints == 0)
@@ -84,8 +91,7 @@ public class NormalTurtle : MonoBehaviour
 
             toTargetEnemy = targetEnemy.Center.transform.position - actor.Center.transform.position;
 
-
-            if(explodeOnCloseness)
+            if (explodeOnCloseness && lifeTime > timeBeforeExplosion)
             {
                 float dist = toTargetEnemy.magnitude;
 
@@ -96,6 +102,7 @@ public class NormalTurtle : MonoBehaviour
                     AProjectile explosionInstance = Instantiate(explosionPrefab);
                     explosionInstance.InitProjectile(actor, Vector2.zero);
                     explosionInstance.transform.position = actor.Center.transform.position;
+                    return;
                 }
             }
            

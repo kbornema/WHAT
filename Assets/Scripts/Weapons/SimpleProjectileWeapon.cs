@@ -5,6 +5,9 @@ using UnityEngine;
 public class SimpleProjectileWeapon : AWeapon
 {
     [SerializeField]
+    protected float knockback = 0.0f;
+
+    [SerializeField]
     protected float cooldown = 0.0f;
 
     [SerializeField]
@@ -31,6 +34,8 @@ public class SimpleProjectileWeapon : AWeapon
 
                 instance.InitProjectile(source, dir.Rotate((Random.value - 0.5f) * Mathf.Deg2Rad * spreadDegree));
             }
+
+            source.AddForce(-dir * knockback, ForceMode2D.Impulse);
 
             StartCoroutine(WaitForReady());
             return true;

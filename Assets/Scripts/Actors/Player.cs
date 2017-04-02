@@ -13,8 +13,12 @@ public class Player : MonoBehaviour
     
 
     [SerializeField]
-    private AWeapon weapon;
-    public AWeapon Weapon { get { return weapon; } set { weapon = value; } }
+    private AWeapon weaponLeft;
+    public AWeapon WeaponLeft { get { return weaponLeft; } set { weaponLeft = value; } }
+
+    [SerializeField]
+    private AWeapon weaponRight;
+    public AWeapon WeaponRight { get { return weaponRight; } set { weaponRight = value; } }
 
     [SerializeField]
     private Health health;
@@ -100,8 +104,6 @@ public class Player : MonoBehaviour
         inputBlocked = true;
         actor.ResetMovement();
 
-        int oldLayer = health.gameObject.layer;
-
         health.gameObject.layer = LayerUtil.NoneNumber;
 
         onKilled.Invoke(this);
@@ -120,8 +122,6 @@ public class Player : MonoBehaviour
 
         health.Refill();
 
-        health.gameObject.layer = oldLayer;
-
         inputBlocked = false;
 
         ApplyColors(1.0f);
@@ -138,10 +138,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Invi(float inviTime, bool speedup)
     {
-        int oldLayer = health.gameObject.layer;
         isInvi = true;
-
-        health.gameObject.layer = LayerUtil.NoneNumber;
 
         float time = 0.0f;
 
@@ -178,7 +175,7 @@ public class Player : MonoBehaviour
         }
         
         ApplyColors(1.0f);
-        health.gameObject.layer = oldLayer;
+        health.gameObject.layer = LayerUtil.DamagableNumber;
         headDing.sprite = null;
         isInvi = false;
 
@@ -211,19 +208,19 @@ public class Player : MonoBehaviour
 
     private void HandleWeapon()
     {
-        if (Input.GetButtonDown(fire0Input) && weapon.Mode == AWeapon.FireMode.Click)
+        if (Input.GetButtonDown(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Click)
         {
-            weapon.TryShoot(actor, actor.LookDirection.normalized);
+            weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
         }
 
-        else if (Input.GetButton(fire0Input) && weapon.Mode == AWeapon.FireMode.Press)
+        else if (Input.GetButton(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Press)
         {
-            weapon.TryShoot(actor, actor.LookDirection.normalized);
+            weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
         }
 
-        else if (Input.GetButtonUp(fire0Input) && weapon.Mode == AWeapon.FireMode.Release)
+        else if (Input.GetButtonUp(fire0Input) && weaponLeft.Mode == AWeapon.FireMode.Release)
         {
-            weapon.TryShoot(actor, actor.LookDirection.normalized);
+            weaponLeft.TryShoot(actor, actor.LookDirection.normalized);
         }
     }
 

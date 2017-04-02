@@ -112,7 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 1
   spawnPos: {fileID: 1465687196448048}
-  cooldown: 0.05
+  knockback: 0.5
+  cooldown: 0.075
   spreadDegree: 10
   projectilePrefab: {fileID: 114079859867558542, guid: ba5df0c0d2beaed44941089118e014a9,
     type: 2}
