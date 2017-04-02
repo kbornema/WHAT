@@ -13,6 +13,9 @@ public class NormalTurtle : MonoBehaviour
     [SerializeField]
     private Actor actor;
 
+    [SerializeField]
+    private bool harmlessAtDay = true;
+
 
     [SerializeField]
     private float thinkTimerMin = 1.0f;
@@ -65,7 +68,7 @@ public class NormalTurtle : MonoBehaviour
 
     private void Update()
     {
-        if(targetEnemy && EventManager.Instance.IsDark)
+        if(targetEnemy && (EventManager.Instance.IsDark || !harmlessAtDay))
         {
             if (targetEnemy.TheHealth.CurHitpoints == 0)
             {

@@ -452,6 +452,7 @@ MonoBehaviour:
   actorDetector: {fileID: 114802286620782422}
   jumpDetector: {fileID: 114863353986782244}
   actor: {fileID: 114673872992723284}
+  harmlessAtDay: 0
   thinkTimerMin: 0.25
   thinkTimerMax: 1
 --- !u!114 &114837357865201732
