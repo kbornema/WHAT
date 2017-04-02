@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4386426046892958}
   - component: {fileID: 50532962135845516}
-  - component: {fileID: 114839554168036778}
   - component: {fileID: 114544092891918422}
   - component: {fileID: 60917100968368130}
   m_Layer: 14
@@ -87,7 +86,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -134,24 +133,11 @@ MonoBehaviour:
   _lifeTime: 0
   _curLifeTime: 0
   rotateWithDirection: 0
-  force: 0.2
+  force: 10
   lifeTime: 1.25
   explosionPrefab: {fileID: 114858640019954298, guid: d4716177b712ac34cab5439a5b3a7e43,
     type: 2}
   explodeAfterTime: 0
---- !u!114 &114839554168036778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1083663556721404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fbbe2d3755daf1469507cc19e0bf54b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myGravityScale: 1
-  _rigidbody: {fileID: 50532962135845516}
 --- !u!212 &212217485861239798
 SpriteRenderer:
   m_ObjectHideFlags: 1
