@@ -8341,6 +8341,16 @@ Prefab:
       propertyPath: gameCam
       value: 
       objectReference: {fileID: 1563381134}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: options.respawnCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: enemyPrefabs.bombChance
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 039dbc6cb9f8d404cabe5b7a05359993, type: 2}
   m_IsPrefabParent: 0
