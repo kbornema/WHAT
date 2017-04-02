@@ -8336,11 +8336,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114338699635315946, guid: 039dbc6cb9f8d404cabe5b7a05359993,
-        type: 2}
-      propertyPath: acidRoot
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
         type: 2}
       propertyPath: gameCam
