@@ -336,13 +336,18 @@ public class GameManager : AManager<GameManager>
     {
         public float bombChance = 0.15f;
         public float bombIncrease = 0.25f;
+        public float goldenTurtleChance = 0.1f;
 
         public Actor bombTurtle;
         public Actor normalTurtle;
-        
+        public Actor goldenTurtule;
+
         public Actor GetRandom(float difficulty)
         {
             float rand = Random.value;
+
+            if (rand < goldenTurtleChance)
+                return goldenTurtule;
 
             if (rand < bombChance + difficulty * bombIncrease)
                 return bombTurtle;
