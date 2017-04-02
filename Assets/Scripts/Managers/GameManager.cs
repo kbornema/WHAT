@@ -17,6 +17,7 @@ public class GameManager : AManager<GameManager>
     [SerializeField]
     private float normalTimeScale = 1.5f;
     public float NormalTimeScale { get { return normalTimeScale; } }
+    public float TotalPoints { get; set; }
 
     [SerializeField]
     private GameCamera gameCam;
@@ -150,10 +151,11 @@ public class GameManager : AManager<GameManager>
     {
         p.Stats.deaths++;
         p.Stats.lostPoints += options.DeathPenality;
+        TotalPoints += options.DeathPenality;
 
         if(CheckAllPlayerDead())
         {
-            Debug.Log("all dead!");
+            Debug.Log("ToDo: Game Over einführen!! @Kai!");
         }
     }
 
@@ -204,12 +206,17 @@ public class GameManager : AManager<GameManager>
 
     private void OnEnemyKilled(Health enemyHealth, Health.EventInfo info)
     {
+        
         if(info.source && info.source.ThePlayer)
         {
             info.source.ThePlayer.Stats.kills++;
 
-            if(enemyHealth.RootActor)
+            if (enemyHealth.RootActor)
+            {
                 info.source.ThePlayer.Stats.gainedPoints += enemyHealth.RootActor.PointsOnKill;
+                TotalPoints += enemyHealth.RootActor.PointsOnKill;
+            }
+
         }
 
         enemyCount--;
