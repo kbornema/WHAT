@@ -23,6 +23,8 @@ public class Granade : AProjectile
 
         AProjectile explosion = Instantiate(explosionPrefab);
 
+        SoundManager.Instance.StartSingleSound(SoundManager.Sound.Explosion);
+
         explosion.InitProjectile(this._sourceActor, Vector2.zero);
 
         explosion.transform.position = gameObject.transform.position;

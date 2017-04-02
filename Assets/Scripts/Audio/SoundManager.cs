@@ -13,11 +13,15 @@ public class SoundManager : AManager<SoundManager> {
     public AudioClip jump;
     public AudioClip acid_intro;
     public AudioClip acid_loop;
+    public AudioClip Shotgun;
     public AudioClip bullet;
     public AudioClip game_over;
     public AudioClip piece;
     public AudioClip darkness;
     public AudioClip dying;
+    public AudioClip explosion;
+    public AudioClip mähHüh;
+    public AudioClip gravity;
 
     public List<GameObject> currentlyPlaying;
     public Dictionary<Sound, AudioClip> soundDic;
@@ -30,7 +34,11 @@ public class SoundManager : AManager<SoundManager> {
         Piece,
         Darkness,
         Jump,
-        Bullet
+        Bullet,
+        Shotgun,
+        Explosion,
+        MähHüh,
+        Gravity
     };
 
     // Use this for initialization
@@ -42,6 +50,10 @@ public class SoundManager : AManager<SoundManager> {
         soundDic.Add(Sound.Darkness, darkness);
         soundDic.Add(Sound.Jump, jump);
         soundDic.Add(Sound.Bullet, bullet);
+        soundDic.Add(Sound.Shotgun, Shotgun);
+        soundDic.Add(Sound.Explosion, explosion);
+        soundDic.Add(Sound.MähHüh, mähHüh);
+        soundDic.Add(Sound.Gravity, gravity);
 
         currentlyPlaying = new List<GameObject>();
 
@@ -58,20 +70,22 @@ public class SoundManager : AManager<SoundManager> {
 
     }
 
-    public void StartSingleSound(Sound sound)
+    public void StartSingleSound(Sound sound, float volume = 1f)
     {
         GameObject audioSource = Instantiate(audioSourceSingle);
         AudioSource ac = audioSource.GetComponent<AudioSource>();
         ac.clip = soundDic[sound];
+        ac.volume = volume;
         ac.Play();
         //currentlyPlaying.Add(audioSource);
     }
 
-    public void StartSingleSoundRandomPitch(Sound sound)
+    public void StartSingleSoundRandomPitch(Sound sound, float volume = 1f)
     {
         GameObject audioSource = Instantiate(audioSourceSingleRandomPitch);
         AudioSource ac = audioSource.GetComponent<AudioSource>();
         ac.clip = soundDic[sound];
+        ac.volume = volume;
         ac.Play();
     }
 

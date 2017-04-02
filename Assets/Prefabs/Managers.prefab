@@ -411,11 +411,15 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: 097addc5a3050aa4fbe6c440b6afa5be, type: 3}
   acid_intro: {fileID: 8300000, guid: a67819a68bdf04e43a78e3e4cbd0d43e, type: 3}
   acid_loop: {fileID: 8300000, guid: ad81c3ec050b937449e34e0eb6c1c1a7, type: 3}
+  Shotgun: {fileID: 8300000, guid: 10fe03c9459539847bfc2da4d7d5785a, type: 3}
   bullet: {fileID: 8300000, guid: 1a929ad1b37aa4e40b6b73a373b410c8, type: 3}
   game_over: {fileID: 8300000, guid: 6c7f5ee481865c7468b6ff58df185797, type: 3}
   piece: {fileID: 8300000, guid: 9e386d43aef710e428cf56fce2dce5f8, type: 3}
   darkness: {fileID: 8300000, guid: 3c3e7b55e6f7b7c48848e88b462b40de, type: 3}
   dying: {fileID: 8300000, guid: 95d2909fe10e43147b175fa183500639, type: 3}
+  explosion: {fileID: 8300000, guid: fa20df08d0deab649bc60ae3a52bb1ba, type: 3}
+  "m\xE4hH\xFCh": {fileID: 8300000, guid: 6da05b18aa451e74184e7b77da5333bc, type: 3}
+  gravity: {fileID: 8300000, guid: 9db0238dfc716f4418da68ce00513e31, type: 3}
   currentlyPlaying: []
 --- !u!114 &114338699635315946
 MonoBehaviour:

@@ -23,7 +23,7 @@ public class DarknessEvent : AGameEvent
     protected override void _StartEvent()
     {
         StartCoroutine(DarknessRoutine());
-        SoundManager.Instance.StartSingleSound(SoundManager.Sound.Darkness);
+        SoundManager.Instance.StartSingleSound(SoundManager.Sound.Darkness, 1.2f);
     }
 
     private IEnumerator DarknessRoutine()

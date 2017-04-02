@@ -7,7 +7,7 @@ public class SurrenderEvent : AGameEvent
     protected override void _StartEvent()
     {
         GameManager.Instance.onEnemyKilledEvent.AddListener(OnEnemyKilled);
-
+        SoundManager.Instance.StartSingleSound(SoundManager.Sound.Piece, 1.2f);
         StartCoroutine(SurrenderEventRoutine());
     }
 

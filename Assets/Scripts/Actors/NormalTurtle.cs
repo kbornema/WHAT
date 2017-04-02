@@ -162,6 +162,7 @@ public class NormalTurtle : MonoBehaviour
                     actor.TheHealth.ApplyHealth(new Health.EventInfo(-actor.TheHealth.MaxHitpoints, null));
 
                     AProjectile explosionInstance = Instantiate(explosionPrefab);
+                    SoundManager.Instance.StartSingleSound(SoundManager.Sound.Explosion);
                     explosionInstance.InitProjectile(actor, Vector2.zero);
                     explosionInstance.transform.position = actor.Center.transform.position;
                     return;

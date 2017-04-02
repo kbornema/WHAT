@@ -53,6 +53,12 @@ public class SimpleProjectileWeapon : AWeapon
                 instance.InitProjectile(source, dir.Rotate((Random.value - 0.5f) * Mathf.Deg2Rad * spreadDegree));
             }
 
+            if(shotsPerTrigger > 1)
+                SoundManager.Instance.StartSingleSound(SoundManager.Sound.Shotgun, 1.1f);
+            else
+                SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Bullet, 0.8f);
+
+
             source.AddForce(-dir * knockback, ForceMode2D.Impulse);
 
             StartCoroutine(WaitForReady());
@@ -60,8 +66,7 @@ public class SimpleProjectileWeapon : AWeapon
             if (usesAmmo)
                 curAmmo--;
 
-            SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Bullet);
-
+            
             return true;
         }
 

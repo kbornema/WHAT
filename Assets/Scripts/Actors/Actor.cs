@@ -253,8 +253,8 @@ public class Actor : MonoBehaviour
         _myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, jumpPower);
 
         jumpCount++;
-
-        SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Jump);
+        if(player != null)
+            SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Jump, 0.8f);
 
         if (actorAnimator)
         {

@@ -201,6 +201,9 @@ public class GameManager : AManager<GameManager>
         {
             Actor instance = enemySpawners[spawnId].Spawn(prefab);
 
+            if (prefab == enemyPrefabs.goldenTurtule)
+                SoundManager.Instance.StartSingleSound(SoundManager.Sound.MähHüh, 0.75f);
+
             Vector3 scale = instance.gameObject.transform.localScale;
 
             float scaleScale = Random.Range(0.80f, 1.10f);

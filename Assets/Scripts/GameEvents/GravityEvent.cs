@@ -13,7 +13,7 @@ public class GravityEvent : AGameEvent
     {
         oldWorldGravity = GameManager.Instance.WorldGravityScale;
         GameManager.Instance.WorldGravityScale = worldGravityScale;
-
+        SoundManager.Instance.StartSingleSound(SoundManager.Sound.Gravity);
         float dur = Random.Range(minDur, maxDur);
 
         StartCoroutine(CancelInvoke(dur));
