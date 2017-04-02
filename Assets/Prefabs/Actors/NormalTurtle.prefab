@@ -54,9 +54,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4860750582477842}
+  - component: {fileID: 114278906404316200}
   - component: {fileID: 58242187599988842}
   - component: {fileID: 50316718593181540}
-  - component: {fileID: 114278906404316200}
   m_Layer: 12
   m_Name: EnemyDetector
   m_TagString: Hostile
@@ -129,9 +129,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4238335673572644}
-  - component: {fileID: 61326326967138560}
-  - component: {fileID: 50082797831603900}
   - component: {fileID: 114418203416512772}
+  - component: {fileID: 50082797831603900}
+  - component: {fileID: 61326326967138560}
   m_Layer: 13
   m_Name: JumpDetector
   m_TagString: Hostile
@@ -602,7 +602,7 @@ MonoBehaviour:
   jumpDetector: {fileID: 114418203416512772}
   actor: {fileID: 114673872992723284}
   thinkTimerMin: 0.5
-  thinkTimerMax: 1.5
+  thinkTimerMax: 0.75
 --- !u!114 &114278906404316200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89a89c6dbf336a48ac1e71b5f5846bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actorAnimator: {fileID: 0}
   player: {fileID: 0}
   health: {fileID: 114870220862797324}
   _center: {fileID: 1450369562235972}

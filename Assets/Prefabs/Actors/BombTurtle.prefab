@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4443143704390056}
   - component: {fileID: 114802286620782422}
-  - component: {fileID: 50933064584700898}
   - component: {fileID: 58730176830323166}
+  - component: {fileID: 50933064584700898}
   m_Layer: 12
   m_Name: playerDetector
   m_TagString: Hostile
@@ -396,13 +396,13 @@ MonoBehaviour:
   _weaponRoot: {fileID: 0}
   _feet: {fileID: 1579128754337510}
   groundDetector: {fileID: 114837357865201732}
-  jumpPower: 12
+  jumpPower: 8
   _myRigidbody: {fileID: 50756755885695026}
   _physicalCollider: {fileID: 0}
   maxJumpCount: 2
   jumpCount: 0
   pointsOnKill: 50
-  _moveSpeed: 7.5
+  _moveSpeed: 5
 --- !u!114 &114785635896725780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,7 +452,7 @@ MonoBehaviour:
   actorDetector: {fileID: 114802286620782422}
   jumpDetector: {fileID: 114863353986782244}
   actor: {fileID: 114673872992723284}
-  thinkTimerMin: 0.5
+  thinkTimerMin: 0.25
   thinkTimerMax: 1
 --- !u!114 &114837357865201732
 MonoBehaviour:
