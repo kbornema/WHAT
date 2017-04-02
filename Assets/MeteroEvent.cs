@@ -9,7 +9,20 @@ public class MeteroEvent : AGameEvent
 
     protected override void _StartEvent()
     {
-       
+        StartCoroutine(MeteroRoutine());
+    }
+
+    private IEnumerator MeteroRoutine()
+    {
+        rain.StartRain();
+
+        float dur = Random.Range(minDur, maxDur);
+
+        yield return new WaitForSeconds(dur);
+            
+        rain.EndRain();
+
+        EventManager.Instance.EndEvent(this);
     }
 
     protected override void _EndEvent()

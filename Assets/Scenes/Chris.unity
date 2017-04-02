@@ -9232,7 +9232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898872714}
   - component: {fileID: 898872715}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: MeteroGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
