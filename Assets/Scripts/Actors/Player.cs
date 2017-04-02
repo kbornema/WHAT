@@ -59,15 +59,16 @@ public class Player : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private Color[] normalSpriteColors;
 
+
     [SerializeField]
-    Sprite[] textureArray;
-    [SerializeField]
-    SpriteRenderer headDing;
+    GameObject gam;
+    SetHeadDing setHeadDing;
 
 	// Use this for initialization
 	void Start () 
     {
-        headDing.sprite = null;
+        setHeadDing = gam.GetComponent<SetHeadDing>();
+        setHeadDing.AciveHeadDing(PlayerIndex);
         string indexIdString = ((int)index).ToString();
 
         moveXAxisInput += indexIdString;
@@ -107,18 +108,14 @@ public class Player : MonoBehaviour
         actor.ResetMovement();
 
         health.gameObject.layer = LayerUtil.NoneNumber;
-
+        setHeadDing.DeactiveHeadDing(PlayerIndex);
         onKilled.Invoke(this);
         //aktiv
-        
-        if (PlayerIndex == Index.One && textureArray.Length >= 1)
-            headDing.sprite = textureArray[0];
-        if (PlayerIndex == Index.Two && textureArray.Length >= 2)
-            headDing.sprite = textureArray[1];
 
+        
 
         ApplyColors(0.0f);
-        headDing.color = Color.white;
+        //headDing.color = Color.white;
         
         yield return new WaitForSeconds(GameManager.Instance.GameOptions.RespawnCooldown);
 
@@ -178,14 +175,16 @@ public class Player : MonoBehaviour
         
         ApplyColors(1.0f);
         health.gameObject.layer = LayerUtil.DamagableNumber;
-        headDing.sprite = null;
+        setHeadDing.AciveHeadDing(PlayerIndex);
         isInvi = false;
 
     }
 
+
 	// Update is called once per frame
 	private void Update () 
     {
+        //setHeadDing.UpdatePosition(transform.position);
         if (inputBlocked)
             return;
 
@@ -204,7 +203,7 @@ public class Player : MonoBehaviour
         {
             actor.LookDirection = (lookDir / lookVal);
         }
-
+        
         HandleWeapon();
 	}
 
