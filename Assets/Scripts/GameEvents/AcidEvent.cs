@@ -17,6 +17,7 @@ public class AcidEvent : AGameEvent
     protected override void _StartEvent()
     {
         StartCoroutine(AcidRoutine());
+        SoundManager.Instance.StartAcid();
     }
 
     private IEnumerator AcidRoutine()
@@ -50,7 +51,7 @@ public class AcidEvent : AGameEvent
 
     protected override void _EndEvent()
     {
-           
+        SoundManager.Instance.EndAcid();   
     }
 
     public override bool GetGameEventWon()

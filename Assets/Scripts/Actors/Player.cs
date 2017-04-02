@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     {
         setHeadDing = gam.GetComponent<SetHeadDing>();
         setHeadDing.AciveHeadDing(PlayerIndex);
+        //setHeadDing.CurBomb(GetBomb());
         string indexIdString = ((int)index).ToString();
 
         moveXAxisInput += indexIdString;
@@ -89,6 +90,10 @@ public class Player : MonoBehaviour
             normalSpriteColors[i] = spriteRenderers[i].color;
         }
 	}
+    public int GetBomb()
+    {
+        return (weaponRight as SimpleProjectileWeapon).CurAmmo;
+    }
 
     private void OnHealthChanged(Health h, Health.EventInfo info)
     {
@@ -184,6 +189,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	private void Update () 
     {
+        setHeadDing.CurBomb(GetBomb());
         //setHeadDing.UpdatePosition(transform.position);
         if (inputBlocked)
             return;
@@ -262,6 +268,7 @@ public class Player : MonoBehaviour
     public void Kill()
     {
         health.ApplyHealth(new Health.EventInfo(-(health.MaxHitpoints + 0.5f), null));
+
     }
 
     [System.Serializable]

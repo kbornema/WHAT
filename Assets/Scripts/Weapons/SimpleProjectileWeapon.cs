@@ -18,6 +18,7 @@ public class SimpleProjectileWeapon : AWeapon
 
     [SerializeField]
     protected int curAmmo = 0;
+    public int CurAmmo{ get { return curAmmo; } }
     [SerializeField]
     protected int maxAmmo = 0;
     [SerializeField]
@@ -58,6 +59,8 @@ public class SimpleProjectileWeapon : AWeapon
 
             if (usesAmmo)
                 curAmmo--;
+
+            SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Bullet);
 
             return true;
         }
