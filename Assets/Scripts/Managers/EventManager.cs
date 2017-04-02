@@ -46,8 +46,11 @@ public class EventManager : AManager<EventManager>
 
     public AGameEvent StartRandomEvent()
     {
+        Debug.Assert(curEvent >= 0 && curEvent < nextEventIds.Count);
+
         int eventId = nextEventIds[curEvent];
-        AGameEvent even = openEvents[eventId];
+
+        AGameEvent even = allGameEvents[eventId];
         StartEvent(even);
 
         curEvent++;

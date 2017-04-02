@@ -25,7 +25,7 @@ public class SlowMoEvent : AGameEvent
 
     protected override void _EndEvent()
     {
-        Time.timeScale = 1.0f;
+        Time.timeScale = GameManager.Instance.NormalTimeScale;
     }
 
     public override bool GetGameEventWon()

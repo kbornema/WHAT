@@ -15,6 +15,10 @@ public class GameManager : AManager<GameManager>
     private int targetFps = 60;
 
     [SerializeField]
+    private float normalTimeScale = 1.5f;
+    public float NormalTimeScale { get { return normalTimeScale; } }
+
+    [SerializeField]
     private GameCamera gameCam;
     public GameCamera GameCam { get { return gameCam; } }
 
@@ -57,10 +61,12 @@ public class GameManager : AManager<GameManager>
 
     private float time = 0.0f;
 
+    private int enemyCount = 0;
+
     protected override void OnAwake()
     {
         Application.targetFrameRate = targetFps;
-
+        Time.timeScale = normalTimeScale;
         StartCoroutine(SpawnRoutine());
     }
 
@@ -170,9 +176,18 @@ public class GameManager : AManager<GameManager>
 
     private void SpawnEnemy(Actor prefab, int spawnId)
     {
-        Actor instance = enemySpawners[spawnId].Spawn(prefab);
+        if(enemyCount < options.MaxEnemies)
+        {
+            Actor instance = enemySpawners[spawnId].Spawn(prefab);
 
-        instance.TheHealth.onZeroHealth.AddListener(OnEnemyKilled);
+            Vector3 scale = instance.gameObject.transform.localScale;
+
+            float scaleScale = Random.Range(0.80f, 1.10f);
+            instance.gameObject.transform.localScale = scale * scaleScale;
+
+            enemyCount++;
+            instance.TheHealth.onZeroHealth.AddListener(OnEnemyKilled);
+        }
     }
 
     private void OnEnemyKilled(Health enemyHealth, Health.EventInfo info)
@@ -184,6 +199,8 @@ public class GameManager : AManager<GameManager>
             if(enemyHealth.RootActor)
                 info.source.ThePlayer.Stats.gainedPoints += enemyHealth.RootActor.PointsOnKill;
         }
+
+        enemyCount--;
     }
     
     public void RegisterPlayerSpawn(PlayerSpawn playerSpawn)
@@ -204,6 +221,10 @@ public class GameManager : AManager<GameManager>
     [System.Serializable]
     public class Options
     {
+        [SerializeField]
+        private int maxEnemies = 25;
+        public int MaxEnemies { get { return maxEnemies; } }
+
         [SerializeField]
         private AWeapon playerStartWeaponPrefab;
         public AWeapon PlayerStartWeaponPrefab { get { return playerStartWeaponPrefab; } }
