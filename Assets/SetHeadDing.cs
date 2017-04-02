@@ -36,4 +36,9 @@ public class SetHeadDing : MonoBehaviour {
     //{
     //    transform.position = pos;
     //}
+
+    public void DerSpiegelOfDoom(Vector3 vec)
+    {
+
+    }
 }

@@ -205,6 +205,7 @@ public class Player : MonoBehaviour
         }
         
         HandleWeapon();
+        
 	}
 
     private void HandleWeapon()
