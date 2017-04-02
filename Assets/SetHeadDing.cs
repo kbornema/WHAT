@@ -14,6 +14,8 @@ public class SetHeadDing : MonoBehaviour {
     [SerializeField]
     Sprite bombSprite;
     [SerializeField]
+    Sprite emptyBombSprite;
+    [SerializeField]
     SpriteRenderer[] bombArray;
     // Use this for initialization
     void Awake () {
@@ -55,7 +57,7 @@ public class SetHeadDing : MonoBehaviour {
         {
             bombArray[0].sprite = bombSprite;
             bombArray[1].sprite = bombSprite;
-            bombArray[2].sprite = null;
+            bombArray[2].sprite = emptyBombSprite;
             return;
         }
 
@@ -63,17 +65,17 @@ public class SetHeadDing : MonoBehaviour {
         {
 
             bombArray[0].sprite = bombSprite;
-            bombArray[1].sprite = null;
-            bombArray[2].sprite = null;
+            bombArray[1].sprite = emptyBombSprite;
+            bombArray[2].sprite = emptyBombSprite;
             return;
         }
 
 
         if (curBomb == 0)
         {
-            bombArray[0].sprite = null;
-            bombArray[1].sprite = null;
-            bombArray[2].sprite = null;
+            bombArray[0].sprite = emptyBombSprite;
+            bombArray[1].sprite = emptyBombSprite;
+            bombArray[2].sprite = emptyBombSprite;
         }
 
 

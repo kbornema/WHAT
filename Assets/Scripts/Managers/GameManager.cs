@@ -72,6 +72,8 @@ public class GameManager : AManager<GameManager>
 
     private int enemyCount = 0;
 
+    int leben = 3;
+
     [HideInInspector]
     public Health.Event onEnemyKilledEvent = new Health.Event();
 
@@ -157,7 +159,10 @@ public class GameManager : AManager<GameManager>
 
         if(CheckAllPlayerDead())
         {
-            Debug.Log("ToDo: Game Over einf�hren!! @Kai!");
+            if(leben == 0)
+                Application.LoadLevel("Highscore");
+            leben--;
+           
         }
     }
 
