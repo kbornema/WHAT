@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4386426046892958}
   - component: {fileID: 50532962135845516}
-  - component: {fileID: 58678935720327182}
   - component: {fileID: 114839554168036778}
   - component: {fileID: 114544092891918422}
-  m_Layer: 13
+  - component: {fileID: 60917100968368130}
+  m_Layer: 14
   m_Name: MeteorBullet
-  m_TagString: Friendly
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4284238455957390}
   - component: {fileID: 212217485861239798}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083663556721404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9511101, y: -1.7238085, z: 0}
+  m_LocalPosition: {x: 3.6247163, y: 12.558645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4284238455957390}
@@ -88,13 +88,13 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: b0455dccd4153eb41ad802142fa0f142, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58678935720327182
-CircleCollider2D:
+--- !u!60 &60917100968368130
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -102,11 +102,17 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.16322947
+  m_Points:
+    m_Paths:
+    - - {x: -0.35427856, y: 0.72909546}
+      - {x: 0.70095825, y: 0.57299805}
+      - {x: 0.92819214, y: -0.57281494}
+      - {x: 0.6418152, y: -0.98965454}
+      - {x: -0.72628784, y: -0.7678833}
+      - {x: -1.0761108, y: 0.22564697}
 --- !u!114 &114544092891918422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,18 +126,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageSource: {fileID: 0}
   _rigidbody: {fileID: 50532962135845516}
-  _destroyMode: 0
-  _inheritTagFromSource: 1
+  _destroyMode: 2
+  _inheritTagFromSource: 0
   _destroyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 33280
   _lifeTime: 0
   _curLifeTime: 0
   rotateWithDirection: 0
   force: 7.5
   lifeTime: 1.25
-  explosionPrefab: {fileID: 114672903495281698, guid: 5d220e0c089d29b459808e0501c2e49a,
+  explosionPrefab: {fileID: 114858640019954298, guid: d4716177b712ac34cab5439a5b3a7e43,
     type: 2}
+  explodeAfterTime: 0
 --- !u!114 &114839554168036778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1754326345
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ebf40891b0e1ad479a20ad950494ddc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57b9d0736a091be40a865f88f3e1e768, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -8344,12 +8344,52 @@ Prefab:
     - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
         type: 2}
       propertyPath: options.respawnCooldown
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
         type: 2}
       propertyPath: enemyPrefabs.bombChance
-      value: 0.1
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: options.deathPenality
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: options.maxEnemies
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: settings.spawnCdMinStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: settings.spawnCdMaxStart
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: settings.spawnsMinStart
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: settings.spawnsMinEnd
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: settings.spawnsMaxEnd
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: settings.spawnsMaxStart
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 039dbc6cb9f8d404cabe5b7a05359993, type: 2}
@@ -9242,7 +9282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898872714}
   - component: {fileID: 898872715}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: MeteroGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}

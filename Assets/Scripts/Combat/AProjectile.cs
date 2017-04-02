@@ -78,7 +78,7 @@ public abstract class AProjectile : MonoBehaviour
         if(this._damageSource)
             this._damageSource.Source = this._sourceActor;
 
-        if (_inheritTagFromSource)
+        if (_inheritTagFromSource && this._sourceActor)
         {
             gameObject.tag = this._sourceActor.gameObject.tag;
 
