@@ -22,7 +22,8 @@ public class LinearProjectile : AProjectile
 
     private void FixedUpdate()
     {
-        _rigidbody.position += _direction * finalSpeed * Time.fixedDeltaTime;
-    }
+        if(_rigidbody)
+            _rigidbody.position += _direction * finalSpeed * Time.fixedDeltaTime;
+    }   
     
 }

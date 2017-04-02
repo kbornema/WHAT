@@ -2572,6 +2572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8229bde9d5dc0a241b1e5db82a846272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _knockback: 0
   _mode: 1
   _hitCooldown: 0.25
   _damage:
@@ -7947,10 +7948,30 @@ Prefab:
       propertyPath: acidRoot
       value: 
       objectReference: {fileID: 2072636469}
-    - target: {fileID: 114664715032622704, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+    - target: {fileID: 114608253013992372, guid: 039dbc6cb9f8d404cabe5b7a05359993,
         type: 2}
-      propertyPath: enemyPrefabs.bombChance
+      propertyPath: minDur
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608253013992372, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: maxDur
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608253013992372, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: fadeTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114882772540040718, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: maxDur
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114882772540040718, guid: 039dbc6cb9f8d404cabe5b7a05359993,
+        type: 2}
+      propertyPath: minDur
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 039dbc6cb9f8d404cabe5b7a05359993, type: 2}

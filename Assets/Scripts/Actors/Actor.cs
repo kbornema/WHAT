@@ -239,8 +239,9 @@ public class Actor : MonoBehaviour
             return;
 
         //float reduction = (jumpCount + 1);
-        //AddForce(new Vector2(0, jumpPower / reduction), ForceMode2D.Impulse);
-        _myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, jumpPower);
+        AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+
+        //_myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, jumpPower);
 
         jumpCount++;
 

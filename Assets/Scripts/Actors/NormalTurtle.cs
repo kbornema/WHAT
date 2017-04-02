@@ -15,7 +15,12 @@ public class NormalTurtle : MonoBehaviour
 
     [SerializeField]
     private bool harmlessAtDay = true;
-
+    [SerializeField]
+    private bool explodeOnCloseness = true;
+    [SerializeField]
+    private float explodeRadius = 2.0f;
+    [SerializeField]
+    private AProjectile explosionPrefab;
 
     [SerializeField]
     private float thinkTimerMin = 1.0f;
@@ -78,6 +83,22 @@ public class NormalTurtle : MonoBehaviour
             }
 
             toTargetEnemy = targetEnemy.Center.transform.position - actor.Center.transform.position;
+
+
+            if(explodeOnCloseness)
+            {
+                float dist = toTargetEnemy.magnitude;
+
+                if (dist < explodeRadius)
+                {
+                    actor.TheHealth.ApplyHealth(new Health.EventInfo(-actor.TheHealth.MaxHitpoints, null));
+
+                    AProjectile explosionInstance = Instantiate(explosionPrefab);
+                    explosionInstance.InitProjectile(actor, Vector2.zero);
+                    explosionInstance.transform.position = actor.Center.transform.position;
+                }
+            }
+           
             toTargetEnemy.Normalize();
 
             if(toTargetEnemy.y > actor.Center.transform.position.y)

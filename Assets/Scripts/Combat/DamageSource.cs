@@ -7,7 +7,8 @@ public class DamageSource : MonoBehaviour
 {
     public class Event : UnityEngine.Events.UnityEvent<DamageSource, Collider2D> { }
     public enum DamageMode { OnEnter, OnStay, OnExit }
-     
+    [SerializeField]
+    private float _knockback = 0.0f;
     [SerializeField] 
     private DamageMode _mode = DamageMode.OnEnter;
     [SerializeField] 
@@ -118,6 +119,21 @@ public class DamageSource : MonoBehaviour
         //only deal damage if the tag is different from this damageSource
         if(damagable != null && !gameObject.CompareTag(collider.tag))
         {
+
+            if(_knockback != 0.0f)
+            {
+                Health h = damagable as Health;
+
+                if (h && h.RootActor)
+                {
+                    Vector2 knockbackDir = h.RootActor.Center.transform.pos2() - gameObject.transform.pos2();
+                    knockbackDir.Normalize();
+
+                    h.RootActor.AddForce(knockbackDir * _knockback, ForceMode2D.Impulse);
+                }
+            }
+
+
             damagable.ApplyHealth(new Health.EventInfo(-_damage._damage, _source));
             onDamageDealt.Invoke(this, collider);
         }

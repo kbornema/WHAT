@@ -601,6 +601,10 @@ MonoBehaviour:
   actorDetector: {fileID: 114278906404316200}
   jumpDetector: {fileID: 114418203416512772}
   actor: {fileID: 114673872992723284}
+  harmlessAtDay: 1
+  explodeOnCloseness: 0
+  explodeRadius: 2
+  explosionPrefab: {fileID: 0}
   thinkTimerMin: 0.5
   thinkTimerMax: 0.75
 --- !u!114 &114278906404316200
@@ -734,6 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8229bde9d5dc0a241b1e5db82a846272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _knockback: 10
   _mode: 1
   _hitCooldown: 0.25
   _damage:

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Actor))]
 public class MirrorMoveDir : MonoBehaviour {
 
     void Start()
