@@ -21,12 +21,12 @@ GameObject:
   - component: {fileID: 4676966278560688}
   - component: {fileID: 212052653728363534}
   - component: {fileID: 60325210935664088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PipeSet_v0.1_8
-  m_TagString: Untagged
+  m_TagString: Neutral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4676966278560688
 Transform:

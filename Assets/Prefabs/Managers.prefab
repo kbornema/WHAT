@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114882772540040718}
   - component: {fileID: 114126727314494078}
   - component: {fileID: 114608253013992372}
+  - component: {fileID: 114853333387872474}
   m_Layer: 0
   m_Name: Events
   m_TagString: Untagged
@@ -141,6 +142,7 @@ MonoBehaviour:
   destroyMode: 0
   worldGravityScale: 2
   targetFps: 60
+  normalTimeScale: 1.5
   gameCam: {fileID: 0}
   playerPrefab: {fileID: 114661173771280794, guid: e41b7452b19cbbc4d9b216d0e566d178,
     type: 2}
@@ -149,6 +151,7 @@ MonoBehaviour:
   - {fileID: 22100000, guid: b7fe3b10c3eac1244948519020d9f57f, type: 2}
   acidRoot: {fileID: 0}
   options:
+    maxEnemies: 20
     playerStartWeaponPrefab: {fileID: 114063841734246348, guid: d6e24c0f2dda0bc48b5c520d9bc12b21,
       type: 2}
     deathPenality: -5
@@ -168,7 +171,7 @@ MonoBehaviour:
     spawnCdMinStart: 5
     spawnCdMaxStart: 8
     spawnsMinEnd: 2
-    spawnsMaxEnd: 6
+    spawnsMaxEnd: 3
     spawnCdMinEnd: 2
     spawnCdMaxEnd: 5
     timeBetweenEventsStart: 5
@@ -188,7 +191,23 @@ MonoBehaviour:
   maxDur: 10
   pointsOnWin: 0
   isRunning: 0
-  timeScale: 0.5
+  timeScale: 1
+--- !u!114 &114853333387872474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392331473910066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d226caa1a75b2d45a46f4b8b37d3ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDur: 0
+  maxDur: 0
+  pointsOnWin: 0
+  isRunning: 0
+  fadeTime: 1
 --- !u!114 &114882772540040718
 MonoBehaviour:
   m_ObjectHideFlags: 1
