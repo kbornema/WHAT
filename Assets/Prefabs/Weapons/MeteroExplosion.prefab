@@ -223,7 +223,7 @@ MonoBehaviour:
   _mode: 0
   _hitCooldown: 2
   _damage:
-    _damage: 150
+    _damage: 50
   _source: {fileID: 0}
 --- !u!212 &212371263633383824
 SpriteRenderer:

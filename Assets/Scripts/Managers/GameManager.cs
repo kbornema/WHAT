@@ -161,6 +161,7 @@ public class GameManager : AManager<GameManager>
         {
             if(leben == 0)
                 Application.LoadLevel("Highscore");
+
             leben--;
            
         }
