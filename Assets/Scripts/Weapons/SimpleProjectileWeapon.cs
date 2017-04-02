@@ -59,6 +59,8 @@ public class SimpleProjectileWeapon : AWeapon
             if (usesAmmo)
                 curAmmo--;
 
+            SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Bullet);
+
             return true;
         }
 

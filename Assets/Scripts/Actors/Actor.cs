@@ -254,6 +254,8 @@ public class Actor : MonoBehaviour
 
         jumpCount++;
 
+        SoundManager.Instance.StartSingleSoundRandomPitch(SoundManager.Sound.Jump);
+
         if (actorAnimator)
         {
             actorAnimator.TriggerJump();
