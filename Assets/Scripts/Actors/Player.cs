@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Actor actor;
     public Actor TheActor { get { return actor; } }
+    
 
     [SerializeField]
     private AWeapon weapon;
@@ -53,9 +54,15 @@ public class Player : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private Color[] normalSpriteColors;
 
+    [SerializeField]
+    Sprite[] textureArray;
+    [SerializeField]
+    SpriteRenderer headDing;
+
 	// Use this for initialization
 	void Start () 
     {
+        headDing.sprite = null;
         string indexIdString = ((int)index).ToString();
 
         moveXAxisInput += indexIdString;
@@ -98,8 +105,16 @@ public class Player : MonoBehaviour
         health.gameObject.layer = LayerUtil.NoneNumber;
 
         onKilled.Invoke(this);
+        //aktiv
         
+        if (PlayerIndex == Index.One && textureArray.Length >= 1)
+            headDing.sprite = textureArray[0];
+        if (PlayerIndex == Index.Two && textureArray.Length >= 2)
+            headDing.sprite = textureArray[1];
+
+
         ApplyColors(0.0f);
+        headDing.color = Color.white;
         
         yield return new WaitForSeconds(GameManager.Instance.GameOptions.RespawnCooldown);
 
@@ -110,7 +125,8 @@ public class Player : MonoBehaviour
         inputBlocked = false;
 
         ApplyColors(1.0f);
-
+        //deaktivieren
+        
         onRespawn.Invoke(this);
 
         actor.gameObject.transform.position = GameManager.Instance.GetPlayerSpawnPos();
@@ -163,7 +179,9 @@ public class Player : MonoBehaviour
         
         ApplyColors(1.0f);
         health.gameObject.layer = oldLayer;
+        headDing.sprite = null;
         isInvi = false;
+
     }
 
 	// Update is called once per frame
