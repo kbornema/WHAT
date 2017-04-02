@@ -72,6 +72,9 @@ public class GameManager : AManager<GameManager>
 
     private int enemyCount = 0;
 
+    [HideInInspector]
+    public Health.Event onEnemyKilledEvent = new Health.Event();
+
     protected override void OnAwake()
     {
         Application.targetFrameRate = targetFps;
@@ -150,12 +153,11 @@ public class GameManager : AManager<GameManager>
     private void OnPlayerDeath(Player p)
     {
         p.Stats.deaths++;
-        p.Stats.lostPoints += options.DeathPenality;
-        TotalPoints += options.DeathPenality;
+        AddPlayerPoints(options.DeathPenality, p);
 
         if(CheckAllPlayerDead())
         {
-            Debug.Log("ToDo: Game Over einführen!! @Kai!");
+            Debug.Log("ToDo: Game Over einfï¿½hren!! @Kai!");
         }
     }
 
@@ -204,21 +206,27 @@ public class GameManager : AManager<GameManager>
         }
     }
 
+
+    public void AddPlayerPoints(int p, Player player)
+    {
+        player.Stats.lostPoints += p;
+        TotalPoints += p;
+    }
+
     private void OnEnemyKilled(Health enemyHealth, Health.EventInfo info)
     {
-        
         if(info.source && info.source.ThePlayer)
         {
             info.source.ThePlayer.Stats.kills++;
 
             if (enemyHealth.RootActor)
             {
-                info.source.ThePlayer.Stats.gainedPoints += enemyHealth.RootActor.PointsOnKill;
-                TotalPoints += enemyHealth.RootActor.PointsOnKill;
+                AddPlayerPoints(enemyHealth.RootActor.PointsOnKill, info.source.ThePlayer);
             }
 
         }
 
+        onEnemyKilledEvent.Invoke(enemyHealth, info);
         enemyCount--;
     }
     
@@ -267,6 +275,8 @@ public class GameManager : AManager<GameManager>
         [SerializeField]
         private float timeToFullDifficulty = 300.0f;
         public float TimeToFullDifficulty { get { return timeToFullDifficulty; } }
+
+        public float GrenadeChance = 0.1f;
     }
 
     [System.Serializable]
@@ -326,13 +336,18 @@ public class GameManager : AManager<GameManager>
     {
         public float bombChance = 0.15f;
         public float bombIncrease = 0.25f;
+        public float goldenTurtleChance = 0.1f;
 
         public Actor bombTurtle;
         public Actor normalTurtle;
-        
+        public Actor goldenTurtule;
+
         public Actor GetRandom(float difficulty)
         {
             float rand = Random.value;
+
+            if (rand < goldenTurtleChance)
+                return goldenTurtule;
 
             if (rand < bombChance + difficulty * bombIncrease)
                 return bombTurtle;

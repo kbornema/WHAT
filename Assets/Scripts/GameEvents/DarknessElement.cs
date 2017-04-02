@@ -37,6 +37,9 @@ public class DarknessElement : MonoBehaviour
 
     private void OnDarknessArrived(AGameEvent eve)
     {
+        if (!this.enabled || !gameObject.activeSelf)
+            return;
+
         if (sprite)
             FadeIn(eve);
 
@@ -48,6 +51,9 @@ public class DarknessElement : MonoBehaviour
 
     private void OnDarknessFading(AGameEvent eve)
     {
+        if (!this.enabled || !gameObject.activeSelf)
+            return;
+
         if (sprite)
             FadeOut(eve);
 

@@ -16,7 +16,7 @@ public class GrenadePickup : MonoBehaviour
                 SimpleProjectileWeapon we = (actor.ThePlayer.WeaponRight as SimpleProjectileWeapon);
 
                 if(we)
-                    we.AddAmmo(2);
+                    we.AddAmmo(1);
             }
             
             Destroy(gameObject);
