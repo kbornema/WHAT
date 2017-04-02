@@ -558,7 +558,7 @@ MonoBehaviour:
   - {fileID: 22100000, guid: b7fe3b10c3eac1244948519020d9f57f, type: 2}
   acidRoot: {fileID: 1366190550857774}
   options:
-    maxEnemies: 25
+    maxEnemies: 35
     playerStartWeaponPrefabs:
     - {fileID: 114067993526778888, guid: 37e7477861862f74987dec999a812b78, type: 2}
     - {fileID: 114063841734246348, guid: d6e24c0f2dda0bc48b5c520d9bc12b21, type: 2}
@@ -566,17 +566,17 @@ MonoBehaviour:
     - {fileID: 114063841734246348, guid: d6e24c0f2dda0bc48b5c520d9bc12b21, type: 2}
     grenadeLauncherPrefab: {fileID: 114551982311178332, guid: ee1cd070672ed0945b3bced7cd5768e0,
       type: 2}
-    deathPenality: -2
-    respawnCooldown: 5
+    deathPenality: -1
+    respawnCooldown: 1.2
     respawnInviTime: 2
     timeToFullDifficulty: 300
     GrenadeChance: 0.1
   bloodSplatterPrefab: {fileID: 1212168641399330, guid: 17599196e8e24b14fb2f65ae755f9bc4,
     type: 2}
   enemyPrefabs:
-    bombChance: 0.15
+    bombChance: 0.2
     bombIncrease: 0.25
-    goldenTurtleChance: 0.1
+    goldenTurtleChance: 0.05
     bombTurtle: {fileID: 114673872992723284, guid: 4d69077877761f4438769ccdb3c9a919,
       type: 2}
     normalTurtle: {fileID: 114673872992723284, guid: 37cec8ba2ef8f304883ce867ec1f34c3,
@@ -586,12 +586,12 @@ MonoBehaviour:
   grenadePickupPrefab: {fileID: 1558402265415042, guid: b96e6351b15e33e40bd2253fa20ec0a9,
     type: 2}
   settings:
-    spawnsMinStart: 1
-    spawnsMaxStart: 2
-    spawnCdMinStart: 5
-    spawnCdMaxStart: 8
-    spawnsMinEnd: 2
-    spawnsMaxEnd: 3
+    spawnsMinStart: 2
+    spawnsMaxStart: 3
+    spawnCdMinStart: 1
+    spawnCdMaxStart: 5
+    spawnsMinEnd: 3
+    spawnsMaxEnd: 5
     spawnCdMinEnd: 2
     spawnCdMaxEnd: 5
     timeBetweenEventsStart: 5
