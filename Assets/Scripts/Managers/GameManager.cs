@@ -157,7 +157,7 @@ public class GameManager : AManager<GameManager>
 
         if(CheckAllPlayerDead())
         {
-            Debug.Log("ToDo: Game Over einf�hren!! @Kai!");
+            Application.LoadLevel("Highscore");
         }
     }
 

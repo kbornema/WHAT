@@ -558,6 +558,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 78ffb0b11bb72334394c4f7747d997e4, type: 3}
   actor: {fileID: 114908113831337400}
   bombSprite: {fileID: 21300000, guid: 8ebf40891b0e1ad479a20ad950494ddc, type: 3}
+  emptyBombSprite: {fileID: 21300000, guid: a3e95b62d832be947bdc7b3ede6ff2db, type: 3}
   bombArray:
   - {fileID: 212456208737490552}
   - {fileID: 212616196541492228}
