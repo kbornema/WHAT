@@ -18,6 +18,7 @@ public class SimpleProjectileWeapon : AWeapon
 
     [SerializeField]
     protected int curAmmo = 0;
+    public int CurAmmo{ get { return curAmmo; } }
     [SerializeField]
     protected int maxAmmo = 0;
     [SerializeField]
