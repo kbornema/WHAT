@@ -98,6 +98,9 @@ public class SoundManager : AManager<SoundManager> {
 
     public void EndAcid()
     {
-        Destroy(currentlyPlaying.Find(a => a.name == "AssetAudio"));
+        var obj = currentlyPlaying.Find(a => a.name == "AssetAudio");
+
+        if(obj)
+            Destroy(obj);
     }
 }

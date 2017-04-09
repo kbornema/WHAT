@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : AManager<GameManager>
 {
@@ -162,7 +163,7 @@ public class GameManager : AManager<GameManager>
             if (leben == 0)
             {
                 SoundManager.Instance.StartSingleSound(SoundManager.Sound.GameOver);
-                Application.LoadLevel("Highscore");
+                SceneManager.LoadScene("Highscore");
             }
             leben--;
            
